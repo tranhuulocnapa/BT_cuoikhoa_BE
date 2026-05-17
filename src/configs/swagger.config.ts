@@ -25,5 +25,6 @@ export function setupSwagger(app: INestApplication): void {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
+  document.security = [{ 'access-token': [], 'cybersoft-token': [] }];
   SwaggerModule.setup('api-docs', app, document);
 }

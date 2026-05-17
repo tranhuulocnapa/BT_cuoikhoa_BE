@@ -5,13 +5,7 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { SeatsService } from '../seats/seats.service';
-
-export interface CreateShowtimeDto {
-  maPhim: number;
-  maRap: number;
-  ngayGioChieu: string;
-  giaVe: number;
-}
+import { CreateShowtimeDto } from './dto/showtime.dto';
 
 @Injectable()
 export class ShowtimesService {
@@ -41,7 +35,7 @@ export class ShowtimesService {
       data: {
         ma_phim: dto.maPhim,
         ma_rap: dto.maRap,
-        ngay_gio_chieu: new Date(dto.ngayGioChieu),
+        ngay_gio_chieu: new Date(dto.ngayChieuGioChieu),
         gia_ve: dto.giaVe,
       },
       include: { phim: true, rap_phim: true },

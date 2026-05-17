@@ -2,7 +2,6 @@ import {
   Controller,
   Post,
   Get,
-  Delete,
   Body,
   Query,
   UseGuards,
@@ -17,7 +16,7 @@ import {
   ApiBearerAuth,
 } from '@nestjs/swagger';
 import { BookingsService } from './bookings.service';
-import type { BookSeatDto } from './bookings.service';
+import { BookSeatDto } from './dto/bookings.dto';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import type { JwtPayload } from '../../common/decorators/current-user.decorator';
@@ -38,18 +37,14 @@ export class BookingsController {
       throw new BadRequestException('Thiếu thông tin bắt buộc');
     }
 
-    // Get user's taiKhoan from email
-    const currentUser = await this.bookingsService
-      .getUserBookings(0)
-      .catch(() => null);
-    // For now, we'll use a simple approach - extract from somewhere
-    // In reality, need to map email to taiKhoan
-    // This is a workaround - in production should query user first
+    const taiKhoanNum = parseInt(user.taiKhoan, 10);
+    if (Number.isNaN(taiKhoanNum)) {
+      throw new BadRequestException(
+        'TaiKhoan hợp lệ không tìm thấy trong token',
+      );
+    }
 
-    return this.bookingsService.bookSeats(
-      user.taiKhoan as unknown as number,
-      dto,
-    );
+    return this.bookingsService.bookSeats(taiKhoanNum, dto);
   }
 
   @Get('LayDanhSachPhongVe')
@@ -60,6 +55,9 @@ export class BookingsController {
       throw new BadRequestException('MaLichChieu là bắt buộc');
     }
     const maLichChieuNum = parseInt(maLichChieu, 10);
+    if (Number.isNaN(maLichChieuNum)) {
+      throw new BadRequestException('MaLichChieu phải là số nguyên hợp lệ');
+    }
     return this.bookingsService.getShowtimeSeats(maLichChieuNum);
   }
 }

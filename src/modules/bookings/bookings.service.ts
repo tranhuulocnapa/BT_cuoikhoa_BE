@@ -6,14 +6,7 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { SeatsService } from '../seats/seats.service';
-
-export interface BookSeatDto {
-  maLichChieu: number;
-  danhSachVe: Array<{
-    maGhe: number;
-    giaVe: number;
-  }>;
-}
+import { BookSeatDto } from './dto/bookings.dto';
 
 @Injectable()
 export class BookingsService {

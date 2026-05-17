@@ -99,6 +99,18 @@ export class UsersService {
     return this.formatUser(user);
   }
 
+  async findByTaiKhoan(taiKhoan: number) {
+    const user = await this.prisma.nguoi_dung.findUnique({
+      where: { tai_khoan: taiKhoan },
+    });
+
+    if (!user) {
+      throw new NotFoundException('Người dùng không tìm thấy');
+    }
+
+    return this.formatUser(user);
+  }
+
   async update(taiKhoan: number, dto: UpdateUserDto) {
     const user = await this.prisma.nguoi_dung.findUnique({
       where: { tai_khoan: taiKhoan },

@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, BadRequestException } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { TheatersService } from './theaters.service';
 import { ShowtimesService } from '../showtimes/showtimes.service';
@@ -41,6 +41,23 @@ export class TheatersController {
       return [];
     }
     const maHeThongRapNum = parseInt(maHeThongRap, 10);
+    if (Number.isNaN(maHeThongRapNum)) {
+      throw new BadRequestException('maHeThongRap phải là số nguyên hợp lệ');
+    }
     return this.showtimesService.findByTheater(maHeThongRapNum, maNhom);
+  }
+
+  @Get('LayThongTinLichChieuPhim')
+  @ApiOperation({ summary: 'Lấy thông tin lịch chiếu phim' })
+  @ApiResponse({ status: 200, description: 'Thông tin lịch chiếu phim' })
+  async getMovieShowtimes(@Query('MaPhim') maPhim: string) {
+    if (!maPhim) {
+      throw new BadRequestException('MaPhim là bắt buộc');
+    }
+    const maPhimNum = parseInt(maPhim, 10);
+    if (Number.isNaN(maPhimNum)) {
+      throw new BadRequestException('MaPhim phải là số nguyên hợp lệ');
+    }
+    return this.showtimesService.findByMovie(maPhimNum);
   }
 }

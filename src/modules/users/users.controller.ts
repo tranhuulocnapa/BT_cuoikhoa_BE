@@ -10,6 +10,7 @@ import {
   HttpCode,
   HttpStatus,
   UseGuards,
+  BadRequestException,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -80,7 +81,10 @@ export class UsersController {
     @CurrentUser() user: JwtPayload,
   ) {
     if (taiKhoan) {
-      // Find user by email or tai khoan string
+      const parsedId = parseInt(taiKhoan, 10);
+      if (!Number.isNaN(parsedId)) {
+        return this.usersService.findOne(parsedId);
+      }
       return this.usersService.findByEmail(taiKhoan);
     }
     return this.usersService.findByEmail(user.email);
@@ -130,6 +134,9 @@ export class UsersController {
   @ApiResponse({ status: 200, description: 'Xóa thành công' })
   async deleteUser(@Query('TaiKhoan') taiKhoan: string) {
     const taiKhoanNum = parseInt(taiKhoan, 10);
+    if (Number.isNaN(taiKhoanNum)) {
+      throw new BadRequestException('TaiKhoan phải là số nguyên hợp lệ');
+    }
     return this.usersService.delete(taiKhoanNum);
   }
 

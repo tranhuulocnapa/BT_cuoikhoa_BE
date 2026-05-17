@@ -3,14 +3,14 @@ import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { RegisterDto, LoginDto, LoginResponseDto } from './dto/auth.dto';
 
-@ApiTags('Auth')
-@Controller('auth')
+@ApiTags('QuanLyNguoiDung')
+@Controller('QuanLyNguoiDung')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Post('register')
+  @Post('DangKy')
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Đăng ký tài khoản' })
+  @ApiOperation({ summary: 'Đăng ký người dùng' })
   @ApiResponse({
     status: 201,
     description: 'Đăng ký thành công',
@@ -20,9 +20,9 @@ export class AuthController {
     return this.authService.register(dto);
   }
 
-  @Post('login')
+  @Post('DangNhap')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Đăng nhập' })
+  @ApiOperation({ summary: 'Đăng nhập người dùng' })
   @ApiResponse({
     status: 200,
     description: 'Đăng nhập thành công',

@@ -15,6 +15,8 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
 import {
   ApiTags,
   ApiOperation,
@@ -30,9 +32,22 @@ import {
   MovieResponseDto,
 } from './dto/movie.dto';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
+import { envConfig } from '../../configs/env.config';
+
+const uploadOptions = {
+  storage: diskStorage({
+    destination: envConfig.UPLOAD_DIR,
+    filename: (_req, file, cb) => {
+      const randomName = `${Date.now()}-${Math.round(
+        Math.random() * 1e9,
+      )}${extname(file.originalname)}`;
+      cb(null, randomName);
+    },
+  }),
+};
 
 @ApiTags('QuanLyPhim')
-@Controller('api/QuanLyPhim')
+@Controller('QuanLyPhim')
 export class MoviesController {
   constructor(private moviesService: MoviesService) {}
 
@@ -65,13 +80,16 @@ export class MoviesController {
       throw new BadRequestException('MaPhim là bắt buộc');
     }
     const maPhimNum = parseInt(maPhim, 10);
+    if (Number.isNaN(maPhimNum)) {
+      throw new BadRequestException('MaPhim phải là số nguyên hợp lệ');
+    }
     return this.moviesService.findOne(maPhimNum);
   }
 
   @Post('ThemPhimUploadHinh')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('access-token')
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file', uploadOptions))
   @ApiConsumes('multipart/form-data')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Thêm phim với upload hình' })
@@ -90,7 +108,7 @@ export class MoviesController {
   @Post('CapNhatPhimUpload')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('access-token')
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file', uploadOptions))
   @ApiConsumes('multipart/form-data')
   @ApiOperation({ summary: 'Cập nhật phim với upload hình' })
   @ApiResponse({ status: 200, type: MovieResponseDto })
@@ -110,7 +128,7 @@ export class MoviesController {
   }
 
   @Post()
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file', uploadOptions))
   @ApiConsumes('multipart/form-data')
   @ApiOperation({ summary: 'Upload hình ảnh' })
   @ApiResponse({ status: 200, description: 'File path' })

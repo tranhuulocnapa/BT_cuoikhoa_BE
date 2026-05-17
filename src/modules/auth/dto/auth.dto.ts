@@ -18,6 +18,24 @@ export class RegisterDto {
   email: string;
 
   @ApiProperty({
+    example: 'GP01',
+    description: 'Mã nhóm',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  maNhom?: string;
+
+  @ApiProperty({
+    example: 'KhachHang',
+    description: 'Mã loại người dùng',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  maLoaiNguoiDung?: string;
+
+  @ApiProperty({
     example: 'password123',
     description: 'Mật khẩu',
   })

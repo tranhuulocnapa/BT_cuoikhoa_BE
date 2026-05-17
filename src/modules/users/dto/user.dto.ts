@@ -49,7 +49,15 @@ export class CreateUserDto {
   })
   @IsOptional()
   @IsString()
-  loaiNguoiDung?: string;
+  maLoaiNguoiDung?: string;
+
+  @ApiProperty({
+    example: 'GP01',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  maNhom?: string;
 }
 
 export class UpdateUserDto {
@@ -70,6 +78,22 @@ export class UpdateUserDto {
   soDt?: string;
 
   @ApiProperty({
+    example: 'GP01',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  maNhom?: string;
+
+  @ApiProperty({
+    example: 'KhachHang',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  maLoaiNguoiDung?: string;
+
+  @ApiProperty({
     example: 'password123',
     required: false,
   })
@@ -80,8 +104,8 @@ export class UpdateUserDto {
 }
 
 export class UserResponseDto {
-  @ApiProperty({ example: 1 })
-  taiKhoan: number;
+  @ApiProperty({ example: 'user123' })
+  taiKhoan: string;
 
   @ApiProperty({ example: 'Nguyễn Văn A' })
   hoTen: string;
@@ -92,8 +116,11 @@ export class UserResponseDto {
   @ApiProperty({ example: '0123456789' })
   soDt: string | null;
 
+  @ApiProperty({ example: 'GP01', required: false })
+  maNhom: string | null;
+
   @ApiProperty({ example: 'KhachHang' })
-  loaiNguoiDung: string | null;
+  maLoaiNguoiDung: string | null;
 }
 
 export class GetUsersQueryDto {

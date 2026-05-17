@@ -81,11 +81,7 @@ export class UsersController {
     @CurrentUser() user: JwtPayload,
   ) {
     if (taiKhoan) {
-      const parsedId = parseInt(taiKhoan, 10);
-      if (!Number.isNaN(parsedId)) {
-        return this.usersService.findOne(parsedId);
-      }
-      return this.usersService.findByEmail(taiKhoan);
+      return this.usersService.findByIdentifier(taiKhoan);
     }
     return this.usersService.findByEmail(user.email);
   }

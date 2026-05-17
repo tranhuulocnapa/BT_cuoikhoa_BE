@@ -32,11 +32,13 @@ export class AuthService {
     // Tạo user mới
     const newUser = await this.prisma.nguoi_dung.create({
       data: {
+        tai_khoan_dang_nhap: dto.taiKhoan,
         ho_ten: dto.hoTen,
         email: dto.email,
-        mat_khau: hashedPassword,
         so_dt: dto.soDt || null,
-        loai_nguoi_dung: 'KhachHang',
+        ma_nhom: dto.maNhom || 'GP01',
+        mat_khau: hashedPassword,
+        loai_nguoi_dung: dto.maLoaiNguoiDung || 'KhachHang',
       },
     });
 
@@ -46,7 +48,7 @@ export class AuthService {
     return {
       accessToken,
       user: {
-        taiKhoan: newUser.tai_khoan.toString(),
+        taiKhoan: newUser.tai_khoan_dang_nhap || newUser.tai_khoan.toString(),
         email: newUser.email,
         hoTen: newUser.ho_ten,
         loaiNguoiDung: newUser.loai_nguoi_dung,
@@ -56,8 +58,19 @@ export class AuthService {
 
   async login(dto: LoginDto): Promise<LoginResponseDto> {
     // Tìm user theo email
-    const user = await this.prisma.nguoi_dung.findUnique({
-      where: { email: dto.taiKhoan },
+    const identifier = dto.taiKhoan;
+    const conditions: any[] = [
+      { email: identifier },
+      { tai_khoan_dang_nhap: identifier },
+    ];
+
+    const parsedId = parseInt(identifier, 10);
+    if (!Number.isNaN(parsedId)) {
+      conditions.push({ tai_khoan: parsedId });
+    }
+
+    const user = await this.prisma.nguoi_dung.findFirst({
+      where: { OR: conditions },
     });
 
     if (!user) {
@@ -81,7 +94,7 @@ export class AuthService {
     return {
       accessToken,
       user: {
-        taiKhoan: user.tai_khoan.toString(),
+        taiKhoan: user.tai_khoan_dang_nhap || user.tai_khoan.toString(),
         email: user.email,
         hoTen: user.ho_ten,
         loaiNguoiDung: user.loai_nguoi_dung,
@@ -91,7 +104,7 @@ export class AuthService {
 
   private generateAccessToken(user: any) {
     const payload = {
-      taiKhoan: user.tai_khoan.toString(),
+      taiKhoan: user.tai_khoan_dang_nhap || user.tai_khoan.toString(),
       email: user.email,
       hoTen: user.ho_ten,
       loaiNguoiDung: user.loai_nguoi_dung,

@@ -18,25 +18,27 @@ export class UsersService {
   constructor(private prisma: PrismaService) {}
 
   async create(dto: CreateUserDto) {
-    // Kiểm tra email đã tồn tại
-    const existingUser = await this.prisma.nguoi_dung.findUnique({
-      where: { email: dto.email },
+    const existingUser = await this.prisma.nguoi_dung.findFirst({
+      where: {
+        OR: [{ email: dto.email }, { tai_khoan_dang_nhap: dto.taiKhoan }],
+      },
     });
 
     if (existingUser) {
-      throw new ConflictException('Email đã được đăng ký');
+      throw new ConflictException('Email hoặc tài khoản đã được đăng ký');
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(dto.matKhau, 10);
 
     const user = await this.prisma.nguoi_dung.create({
       data: {
+        tai_khoan_dang_nhap: dto.taiKhoan,
         ho_ten: dto.hoTen,
         email: dto.email,
         mat_khau: hashedPassword,
         so_dt: dto.soDt || null,
-        loai_nguoi_dung: dto.loaiNguoiDung || 'KhachHang',
+        ma_nhom: dto.maNhom || 'GP01',
+        loai_nguoi_dung: dto.maLoaiNguoiDung || 'KhachHang',
       },
     });
 
@@ -44,7 +46,7 @@ export class UsersService {
   }
 
   async findAll(query: GetUsersQueryDto): Promise<PaginatedResponse<any>> {
-    const { soTrang = 1, soPhanTuTrenTrang = 10, tuKhoa = '' } = query;
+    const { soTrang = 1, soPhanTuTrenTrang = 10, tuKhoa = '', maNhom } = query;
     const { skip, take } = calculatePagination(soTrang, soPhanTuTrenTrang);
 
     const whereClause: any = {};
@@ -52,7 +54,11 @@ export class UsersService {
       whereClause.OR = [
         { ho_ten: { contains: tuKhoa } },
         { email: { contains: tuKhoa } },
+        { tai_khoan_dang_nhap: { contains: tuKhoa } },
       ];
+    }
+    if (maNhom) {
+      whereClause.ma_nhom = maNhom;
     }
 
     const [users, total] = await Promise.all([
@@ -90,6 +96,28 @@ export class UsersService {
   async findByEmail(email: string) {
     const user = await this.prisma.nguoi_dung.findUnique({
       where: { email },
+    });
+
+    if (!user) {
+      throw new NotFoundException('Người dùng không tìm thấy');
+    }
+
+    return this.formatUser(user);
+  }
+
+  async findByIdentifier(identifier: string) {
+    const parsedId = parseInt(identifier, 10);
+    const conditions: any[] = [
+      { tai_khoan_dang_nhap: identifier },
+      { email: identifier },
+    ];
+
+    if (!Number.isNaN(parsedId)) {
+      conditions.push({ tai_khoan: parsedId });
+    }
+
+    const user = await this.prisma.nguoi_dung.findFirst({
+      where: { OR: conditions },
     });
 
     if (!user) {
@@ -153,11 +181,12 @@ export class UsersService {
 
   private formatUser(user: any) {
     return {
-      taiKhoan: user.tai_khoan,
+      taiKhoan: user.tai_khoan_dang_nhap || user.tai_khoan.toString(),
       hoTen: user.ho_ten,
       email: user.email,
       soDt: user.so_dt,
-      loaiNguoiDung: user.loai_nguoi_dung,
+      maNhom: user.ma_nhom || null,
+      maLoaiNguoiDung: user.loai_nguoi_dung || null,
     };
   }
 }

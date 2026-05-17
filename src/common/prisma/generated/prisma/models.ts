@@ -8,13 +8,13 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/banner.js'
-export type * from './models/cum_rap.js'
-export type * from './models/dat_ve.js'
-export type * from './models/ghe.js'
-export type * from './models/he_thong_rap.js'
-export type * from './models/lich_chieu.js'
-export type * from './models/nguoi_dung.js'
-export type * from './models/phim.js'
-export type * from './models/rap_phim.js'
-export type * from './commonInputTypes.js'
+export type * from './models/banner'
+export type * from './models/cum_rap'
+export type * from './models/dat_ve'
+export type * from './models/ghe'
+export type * from './models/he_thong_rap'
+export type * from './models/lich_chieu'
+export type * from './models/nguoi_dung'
+export type * from './models/phim'
+export type * from './models/rap_phim'
+export type * from './commonInputTypes'

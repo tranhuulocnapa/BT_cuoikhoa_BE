@@ -17,8 +17,8 @@
 
 import * as runtime from "@prisma/client/runtime/index-browser"
 
-export type * from '../models.js'
-export type * from './prismaNamespace.js'
+export type * from '../models'
+export type * from './prismaNamespace'
 
 export const Decimal = runtime.Decimal
 
@@ -138,9 +138,11 @@ export type Lich_chieuScalarFieldEnum = (typeof Lich_chieuScalarFieldEnum)[keyof
 
 export const Nguoi_dungScalarFieldEnum = {
   tai_khoan: 'tai_khoan',
+  tai_khoan_dang_nhap: 'tai_khoan_dang_nhap',
   ho_ten: 'ho_ten',
   email: 'email',
   so_dt: 'so_dt',
+  ma_nhom: 'ma_nhom',
   mat_khau: 'mat_khau',
   loai_nguoi_dung: 'loai_nguoi_dung'
 } as const
@@ -221,9 +223,11 @@ export type he_thong_rapOrderByRelevanceFieldEnum = (typeof he_thong_rapOrderByR
 
 
 export const nguoi_dungOrderByRelevanceFieldEnum = {
+  tai_khoan_dang_nhap: 'tai_khoan_dang_nhap',
   ho_ten: 'ho_ten',
   email: 'email',
   so_dt: 'so_dt',
+  ma_nhom: 'ma_nhom',
   mat_khau: 'mat_khau',
   loai_nguoi_dung: 'loai_nguoi_dung'
 } as const

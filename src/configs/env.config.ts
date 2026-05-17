@@ -16,7 +16,7 @@ export const envConfig: IEnvConfig = {
     process.env.DATABASE_URL || 'mysql://root:12345@localhost:3308/movie_db',
   JWT_SECRET: process.env.JWT_SECRET || 'your_jwt_secret_key',
   JWT_EXPIRATION: process.env.JWT_EXPIRATION || '7d',
-  PORT: parseInt(process.env.PORT, 10) || 3000,
+  PORT: parseInt(process.env.PORT || '3000', 10),
   NODE_ENV: process.env.NODE_ENV || 'development',
   UPLOAD_DIR: process.env.UPLOAD_DIR || './uploads',
 };

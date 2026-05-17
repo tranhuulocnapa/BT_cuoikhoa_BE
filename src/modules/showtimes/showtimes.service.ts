@@ -77,7 +77,7 @@ export class ShowtimesService {
 
       const group = groupedBySystem.get(systemKey);
       let cumRapEntry = group.cumRap.find(
-        (cr) => cr.maCumRap === showtime.rap_phim.maCumRap,
+        (cr) => cr.maCumRap === showtime.rap_phim.ma_cum_rap,
       );
 
       if (!cumRapEntry) {

@@ -19,7 +19,7 @@ import { ShowtimesService, CreateShowtimeDto } from './showtimes.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 
 @ApiTags('QuanLyDatVe')
-@Controller('api/QuanLyDatVe')
+@Controller('QuanLyDatVe')
 export class ShowtimesController {
   constructor(private showtimesService: ShowtimesService) {}
 

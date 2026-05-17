@@ -4,7 +4,7 @@ import { TheatersService } from './theaters.service';
 import { ShowtimesService } from '../showtimes/showtimes.service';
 
 @ApiTags('QuanLyRap')
-@Controller('api/QuanLyRap')
+@Controller('QuanLyRap')
 export class TheatersController {
   constructor(
     private theatersService: TheatersService,

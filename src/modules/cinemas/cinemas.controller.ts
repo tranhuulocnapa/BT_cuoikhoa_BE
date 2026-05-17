@@ -3,7 +3,7 @@ import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CinemasService } from './cinemas.service';
 
 @ApiTags('QuanLyRap')
-@Controller('api/QuanLyRap')
+@Controller('QuanLyRap')
 export class CinemasController {
   constructor(private cinemasService: CinemasService) {}
 

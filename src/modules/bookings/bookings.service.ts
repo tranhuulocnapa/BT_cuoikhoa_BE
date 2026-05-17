@@ -45,7 +45,12 @@ export class BookingsService {
     }
 
     // Đặt vé
-    const bookings = [];
+    const bookings: {
+      taiKhoan: number;
+      maLichChieu: number;
+      maGhe: number;
+      tenGhe?: string;
+    }[] = [];
     for (const ve of dto.danhSachVe) {
       const seat = await this.prisma.ghe.findUnique({
         where: { ma_ghe: ve.maGhe },
@@ -144,7 +149,12 @@ export class BookingsService {
     return { message: 'Hủy vé thành công' };
   }
 
-  private formatBooking(booking: any) {
+  private formatBooking(booking: any): {
+    taiKhoan: number;
+    maLichChieu: number;
+    maGhe: number;
+    tenGhe?: string;
+  } {
     return {
       taiKhoan: booking.tai_khoan,
       maLichChieu: booking.ma_lich_chieu,

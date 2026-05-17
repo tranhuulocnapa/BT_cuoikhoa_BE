@@ -3,7 +3,7 @@ import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { BannersService } from './banners.service';
 
 @ApiTags('QuanLyPhim')
-@Controller('api/QuanLyPhim')
+@Controller('QuanLyPhim')
 export class BannersController {
   constructor(private bannersService: BannersService) {}
 

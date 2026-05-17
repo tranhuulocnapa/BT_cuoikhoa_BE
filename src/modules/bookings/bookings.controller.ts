@@ -16,15 +16,14 @@ import {
   ApiResponse,
   ApiBearerAuth,
 } from '@nestjs/swagger';
-import { BookingsService, BookSeatDto } from './bookings.service';
+import { BookingsService } from './bookings.service';
+import type { BookSeatDto } from './bookings.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
-import {
-  CurrentUser,
-  JwtPayload,
-} from '../../common/decorators/current-user.decorator';
+import { CurrentUser } from '../../common/decorators/current-user.decorator';
+import type { JwtPayload } from '../../common/decorators/current-user.decorator';
 
 @ApiTags('QuanLyDatVe')
-@Controller('api/QuanLyDatVe')
+@Controller('QuanLyDatVe')
 export class BookingsController {
   constructor(private bookingsService: BookingsService) {}
 

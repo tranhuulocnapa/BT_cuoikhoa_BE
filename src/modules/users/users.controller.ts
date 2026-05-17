@@ -25,13 +25,11 @@ import {
   UserResponseDto,
 } from './dto/user.dto';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
-import {
-  CurrentUser,
-  JwtPayload,
-} from '../../common/decorators/current-user.decorator';
+import { CurrentUser } from '../../common/decorators/current-user.decorator';
+import type { JwtPayload } from '../../common/decorators/current-user.decorator';
 
 @ApiTags('QuanLyNguoiDung')
-@Controller('api/QuanLyNguoiDung')
+@Controller('QuanLyNguoiDung')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 

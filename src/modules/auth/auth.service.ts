@@ -17,7 +17,7 @@ export class AuthService {
   ) {}
 
   async register(dto: RegisterDto) {
-    // Kiểm tra tài khoản đã tồn tại
+    // Kiểm tra email đã tồn tại
     const existingUser = await this.prisma.nguoi_dung.findUnique({
       where: { email: dto.email },
     });
@@ -29,14 +29,12 @@ export class AuthService {
     // Hash password
     const hashedPassword = await bcrypt.hash(dto.matKhau, 10);
 
-    // Tạo user mới
+    // Tạo user mới (sử dụng các cột hiện có trong database)
     const newUser = await this.prisma.nguoi_dung.create({
       data: {
-        tai_khoan_dang_nhap: dto.taiKhoan,
         ho_ten: dto.hoTen,
         email: dto.email,
         so_dt: dto.soDt || null,
-        ma_nhom: dto.maNhom || 'GP01',
         mat_khau: hashedPassword,
         loai_nguoi_dung: dto.maLoaiNguoiDung || 'KhachHang',
       },
@@ -48,7 +46,7 @@ export class AuthService {
     return {
       accessToken,
       user: {
-        taiKhoan: newUser.tai_khoan_dang_nhap || newUser.tai_khoan.toString(),
+        taiKhoan: newUser.tai_khoan?.toString() || '',
         email: newUser.email,
         hoTen: newUser.ho_ten,
         loaiNguoiDung: newUser.loai_nguoi_dung,
@@ -57,12 +55,9 @@ export class AuthService {
   }
 
   async login(dto: LoginDto): Promise<LoginResponseDto> {
-    // Tìm user theo email
+    // Tìm user theo email hoặc id
     const identifier = dto.taiKhoan;
-    const conditions: any[] = [
-      { email: identifier },
-      { tai_khoan_dang_nhap: identifier },
-    ];
+    const conditions: any[] = [{ email: identifier }];
 
     const parsedId = parseInt(identifier, 10);
     if (!Number.isNaN(parsedId)) {
@@ -94,7 +89,7 @@ export class AuthService {
     return {
       accessToken,
       user: {
-        taiKhoan: user.tai_khoan_dang_nhap || user.tai_khoan.toString(),
+        taiKhoan: user.tai_khoan?.toString() || '',
         email: user.email,
         hoTen: user.ho_ten,
         loaiNguoiDung: user.loai_nguoi_dung,
@@ -104,7 +99,7 @@ export class AuthService {
 
   private generateAccessToken(user: any) {
     const payload = {
-      taiKhoan: user.tai_khoan_dang_nhap || user.tai_khoan.toString(),
+      taiKhoan: user.tai_khoan?.toString() || '',
       email: user.email,
       hoTen: user.ho_ten,
       loaiNguoiDung: user.loai_nguoi_dung,

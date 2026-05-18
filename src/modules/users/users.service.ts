@@ -19,9 +19,7 @@ export class UsersService {
 
   async create(dto: CreateUserDto) {
     const existingUser = await this.prisma.nguoi_dung.findFirst({
-      where: {
-        OR: [{ email: dto.email }, { tai_khoan_dang_nhap: dto.taiKhoan }],
-      },
+      where: { OR: [{ email: dto.email }] },
     });
 
     if (existingUser) {
@@ -32,12 +30,10 @@ export class UsersService {
 
     const user = await this.prisma.nguoi_dung.create({
       data: {
-        tai_khoan_dang_nhap: dto.taiKhoan,
         ho_ten: dto.hoTen,
         email: dto.email,
         mat_khau: hashedPassword,
         so_dt: dto.soDt || null,
-        ma_nhom: dto.maNhom || 'GP01',
         loai_nguoi_dung: dto.maLoaiNguoiDung || 'KhachHang',
       },
     });
@@ -54,7 +50,6 @@ export class UsersService {
       whereClause.OR = [
         { ho_ten: { contains: tuKhoa } },
         { email: { contains: tuKhoa } },
-        { tai_khoan_dang_nhap: { contains: tuKhoa } },
       ];
     }
     if (maNhom) {
@@ -107,10 +102,7 @@ export class UsersService {
 
   async findByIdentifier(identifier: string) {
     const parsedId = parseInt(identifier, 10);
-    const conditions: any[] = [
-      { tai_khoan_dang_nhap: identifier },
-      { email: identifier },
-    ];
+    const conditions: any[] = [{ email: identifier }];
 
     if (!Number.isNaN(parsedId)) {
       conditions.push({ tai_khoan: parsedId });
@@ -181,11 +173,11 @@ export class UsersService {
 
   private formatUser(user: any) {
     return {
-      taiKhoan: user.tai_khoan_dang_nhap || user.tai_khoan.toString(),
+      taiKhoan: user.tai_khoan?.toString() || '',
       hoTen: user.ho_ten,
       email: user.email,
       soDt: user.so_dt,
-      maNhom: user.ma_nhom || null,
+      maNhom: null,
       maLoaiNguoiDung: user.loai_nguoi_dung || null,
     };
   }

@@ -73,15 +73,13 @@ model lich_chieu {
 }
 
 model nguoi_dung {
-  tai_khoan            Int      @id @default(autoincrement())
-  tai_khoan_dang_nhap  String?  @unique @db.VarChar(255)
-  ho_ten               String   @db.VarChar(255)
-  email                String   @unique(map: "email") @db.VarChar(255)
-  so_dt                String?  @db.VarChar(20)
-  ma_nhom              String?  @db.VarChar(50)
-  mat_khau             String   @db.VarChar(255)
-  loai_nguoi_dung      String?  @db.VarChar(50)
-  dat_ve               dat_ve[]
+  tai_khoan       Int      @id @default(autoincrement())
+  ho_ten          String   @db.VarChar(255)
+  email           String   @unique(map: "email") @db.VarChar(255)
+  so_dt           String?  @db.VarChar(20)
+  mat_khau        String   @db.VarChar(255)
+  loai_nguoi_dung String?  @db.VarChar(50)
+  dat_ve          dat_ve[]
 }
 
 model phim {

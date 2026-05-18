@@ -1105,11 +1105,9 @@ export type Lich_chieuScalarFieldEnum = (typeof Lich_chieuScalarFieldEnum)[keyof
 
 export const Nguoi_dungScalarFieldEnum = {
   tai_khoan: 'tai_khoan',
-  tai_khoan_dang_nhap: 'tai_khoan_dang_nhap',
   ho_ten: 'ho_ten',
   email: 'email',
   so_dt: 'so_dt',
-  ma_nhom: 'ma_nhom',
   mat_khau: 'mat_khau',
   loai_nguoi_dung: 'loai_nguoi_dung'
 } as const
@@ -1190,11 +1188,9 @@ export type he_thong_rapOrderByRelevanceFieldEnum = (typeof he_thong_rapOrderByR
 
 
 export const nguoi_dungOrderByRelevanceFieldEnum = {
-  tai_khoan_dang_nhap: 'tai_khoan_dang_nhap',
   ho_ten: 'ho_ten',
   email: 'email',
   so_dt: 'so_dt',
-  ma_nhom: 'ma_nhom',
   mat_khau: 'mat_khau',
   loai_nguoi_dung: 'loai_nguoi_dung'
 } as const

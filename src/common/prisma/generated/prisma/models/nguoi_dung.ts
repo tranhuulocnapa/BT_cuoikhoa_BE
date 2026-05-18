@@ -36,33 +36,27 @@ export type Nguoi_dungSumAggregateOutputType = {
 
 export type Nguoi_dungMinAggregateOutputType = {
   tai_khoan: number | null
-  tai_khoan_dang_nhap: string | null
   ho_ten: string | null
   email: string | null
   so_dt: string | null
-  ma_nhom: string | null
   mat_khau: string | null
   loai_nguoi_dung: string | null
 }
 
 export type Nguoi_dungMaxAggregateOutputType = {
   tai_khoan: number | null
-  tai_khoan_dang_nhap: string | null
   ho_ten: string | null
   email: string | null
   so_dt: string | null
-  ma_nhom: string | null
   mat_khau: string | null
   loai_nguoi_dung: string | null
 }
 
 export type Nguoi_dungCountAggregateOutputType = {
   tai_khoan: number
-  tai_khoan_dang_nhap: number
   ho_ten: number
   email: number
   so_dt: number
-  ma_nhom: number
   mat_khau: number
   loai_nguoi_dung: number
   _all: number
@@ -79,33 +73,27 @@ export type Nguoi_dungSumAggregateInputType = {
 
 export type Nguoi_dungMinAggregateInputType = {
   tai_khoan?: true
-  tai_khoan_dang_nhap?: true
   ho_ten?: true
   email?: true
   so_dt?: true
-  ma_nhom?: true
   mat_khau?: true
   loai_nguoi_dung?: true
 }
 
 export type Nguoi_dungMaxAggregateInputType = {
   tai_khoan?: true
-  tai_khoan_dang_nhap?: true
   ho_ten?: true
   email?: true
   so_dt?: true
-  ma_nhom?: true
   mat_khau?: true
   loai_nguoi_dung?: true
 }
 
 export type Nguoi_dungCountAggregateInputType = {
   tai_khoan?: true
-  tai_khoan_dang_nhap?: true
   ho_ten?: true
   email?: true
   so_dt?: true
-  ma_nhom?: true
   mat_khau?: true
   loai_nguoi_dung?: true
   _all?: true
@@ -199,11 +187,9 @@ export type nguoi_dungGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 
 export type Nguoi_dungGroupByOutputType = {
   tai_khoan: number
-  tai_khoan_dang_nhap: string | null
   ho_ten: string
   email: string
   so_dt: string | null
-  ma_nhom: string | null
   mat_khau: string
   loai_nguoi_dung: string | null
   _count: Nguoi_dungCountAggregateOutputType | null
@@ -233,11 +219,9 @@ export type nguoi_dungWhereInput = {
   OR?: Prisma.nguoi_dungWhereInput[]
   NOT?: Prisma.nguoi_dungWhereInput | Prisma.nguoi_dungWhereInput[]
   tai_khoan?: Prisma.IntFilter<"nguoi_dung"> | number
-  tai_khoan_dang_nhap?: Prisma.StringNullableFilter<"nguoi_dung"> | string | null
   ho_ten?: Prisma.StringFilter<"nguoi_dung"> | string
   email?: Prisma.StringFilter<"nguoi_dung"> | string
   so_dt?: Prisma.StringNullableFilter<"nguoi_dung"> | string | null
-  ma_nhom?: Prisma.StringNullableFilter<"nguoi_dung"> | string | null
   mat_khau?: Prisma.StringFilter<"nguoi_dung"> | string
   loai_nguoi_dung?: Prisma.StringNullableFilter<"nguoi_dung"> | string | null
   dat_ve?: Prisma.Dat_veListRelationFilter
@@ -245,11 +229,9 @@ export type nguoi_dungWhereInput = {
 
 export type nguoi_dungOrderByWithRelationInput = {
   tai_khoan?: Prisma.SortOrder
-  tai_khoan_dang_nhap?: Prisma.SortOrderInput | Prisma.SortOrder
   ho_ten?: Prisma.SortOrder
   email?: Prisma.SortOrder
   so_dt?: Prisma.SortOrderInput | Prisma.SortOrder
-  ma_nhom?: Prisma.SortOrderInput | Prisma.SortOrder
   mat_khau?: Prisma.SortOrder
   loai_nguoi_dung?: Prisma.SortOrderInput | Prisma.SortOrder
   dat_ve?: Prisma.dat_veOrderByRelationAggregateInput
@@ -258,26 +240,22 @@ export type nguoi_dungOrderByWithRelationInput = {
 
 export type nguoi_dungWhereUniqueInput = Prisma.AtLeast<{
   tai_khoan?: number
-  tai_khoan_dang_nhap?: string
   email?: string
   AND?: Prisma.nguoi_dungWhereInput | Prisma.nguoi_dungWhereInput[]
   OR?: Prisma.nguoi_dungWhereInput[]
   NOT?: Prisma.nguoi_dungWhereInput | Prisma.nguoi_dungWhereInput[]
   ho_ten?: Prisma.StringFilter<"nguoi_dung"> | string
   so_dt?: Prisma.StringNullableFilter<"nguoi_dung"> | string | null
-  ma_nhom?: Prisma.StringNullableFilter<"nguoi_dung"> | string | null
   mat_khau?: Prisma.StringFilter<"nguoi_dung"> | string
   loai_nguoi_dung?: Prisma.StringNullableFilter<"nguoi_dung"> | string | null
   dat_ve?: Prisma.Dat_veListRelationFilter
-}, "tai_khoan" | "tai_khoan_dang_nhap" | "email">
+}, "tai_khoan" | "email">
 
 export type nguoi_dungOrderByWithAggregationInput = {
   tai_khoan?: Prisma.SortOrder
-  tai_khoan_dang_nhap?: Prisma.SortOrderInput | Prisma.SortOrder
   ho_ten?: Prisma.SortOrder
   email?: Prisma.SortOrder
   so_dt?: Prisma.SortOrderInput | Prisma.SortOrder
-  ma_nhom?: Prisma.SortOrderInput | Prisma.SortOrder
   mat_khau?: Prisma.SortOrder
   loai_nguoi_dung?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.nguoi_dungCountOrderByAggregateInput
@@ -292,21 +270,17 @@ export type nguoi_dungScalarWhereWithAggregatesInput = {
   OR?: Prisma.nguoi_dungScalarWhereWithAggregatesInput[]
   NOT?: Prisma.nguoi_dungScalarWhereWithAggregatesInput | Prisma.nguoi_dungScalarWhereWithAggregatesInput[]
   tai_khoan?: Prisma.IntWithAggregatesFilter<"nguoi_dung"> | number
-  tai_khoan_dang_nhap?: Prisma.StringNullableWithAggregatesFilter<"nguoi_dung"> | string | null
   ho_ten?: Prisma.StringWithAggregatesFilter<"nguoi_dung"> | string
   email?: Prisma.StringWithAggregatesFilter<"nguoi_dung"> | string
   so_dt?: Prisma.StringNullableWithAggregatesFilter<"nguoi_dung"> | string | null
-  ma_nhom?: Prisma.StringNullableWithAggregatesFilter<"nguoi_dung"> | string | null
   mat_khau?: Prisma.StringWithAggregatesFilter<"nguoi_dung"> | string
   loai_nguoi_dung?: Prisma.StringNullableWithAggregatesFilter<"nguoi_dung"> | string | null
 }
 
 export type nguoi_dungCreateInput = {
-  tai_khoan_dang_nhap?: string | null
   ho_ten: string
   email: string
   so_dt?: string | null
-  ma_nhom?: string | null
   mat_khau: string
   loai_nguoi_dung?: string | null
   dat_ve?: Prisma.dat_veCreateNestedManyWithoutNguoi_dungInput
@@ -314,22 +288,18 @@ export type nguoi_dungCreateInput = {
 
 export type nguoi_dungUncheckedCreateInput = {
   tai_khoan?: number
-  tai_khoan_dang_nhap?: string | null
   ho_ten: string
   email: string
   so_dt?: string | null
-  ma_nhom?: string | null
   mat_khau: string
   loai_nguoi_dung?: string | null
   dat_ve?: Prisma.dat_veUncheckedCreateNestedManyWithoutNguoi_dungInput
 }
 
 export type nguoi_dungUpdateInput = {
-  tai_khoan_dang_nhap?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ho_ten?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   so_dt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ma_nhom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mat_khau?: Prisma.StringFieldUpdateOperationsInput | string
   loai_nguoi_dung?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dat_ve?: Prisma.dat_veUpdateManyWithoutNguoi_dungNestedInput
@@ -337,11 +307,9 @@ export type nguoi_dungUpdateInput = {
 
 export type nguoi_dungUncheckedUpdateInput = {
   tai_khoan?: Prisma.IntFieldUpdateOperationsInput | number
-  tai_khoan_dang_nhap?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ho_ten?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   so_dt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ma_nhom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mat_khau?: Prisma.StringFieldUpdateOperationsInput | string
   loai_nguoi_dung?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dat_ve?: Prisma.dat_veUncheckedUpdateManyWithoutNguoi_dungNestedInput
@@ -349,32 +317,26 @@ export type nguoi_dungUncheckedUpdateInput = {
 
 export type nguoi_dungCreateManyInput = {
   tai_khoan?: number
-  tai_khoan_dang_nhap?: string | null
   ho_ten: string
   email: string
   so_dt?: string | null
-  ma_nhom?: string | null
   mat_khau: string
   loai_nguoi_dung?: string | null
 }
 
 export type nguoi_dungUpdateManyMutationInput = {
-  tai_khoan_dang_nhap?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ho_ten?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   so_dt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ma_nhom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mat_khau?: Prisma.StringFieldUpdateOperationsInput | string
   loai_nguoi_dung?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type nguoi_dungUncheckedUpdateManyInput = {
   tai_khoan?: Prisma.IntFieldUpdateOperationsInput | number
-  tai_khoan_dang_nhap?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ho_ten?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   so_dt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ma_nhom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mat_khau?: Prisma.StringFieldUpdateOperationsInput | string
   loai_nguoi_dung?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -392,11 +354,9 @@ export type nguoi_dungOrderByRelevanceInput = {
 
 export type nguoi_dungCountOrderByAggregateInput = {
   tai_khoan?: Prisma.SortOrder
-  tai_khoan_dang_nhap?: Prisma.SortOrder
   ho_ten?: Prisma.SortOrder
   email?: Prisma.SortOrder
   so_dt?: Prisma.SortOrder
-  ma_nhom?: Prisma.SortOrder
   mat_khau?: Prisma.SortOrder
   loai_nguoi_dung?: Prisma.SortOrder
 }
@@ -407,22 +367,18 @@ export type nguoi_dungAvgOrderByAggregateInput = {
 
 export type nguoi_dungMaxOrderByAggregateInput = {
   tai_khoan?: Prisma.SortOrder
-  tai_khoan_dang_nhap?: Prisma.SortOrder
   ho_ten?: Prisma.SortOrder
   email?: Prisma.SortOrder
   so_dt?: Prisma.SortOrder
-  ma_nhom?: Prisma.SortOrder
   mat_khau?: Prisma.SortOrder
   loai_nguoi_dung?: Prisma.SortOrder
 }
 
 export type nguoi_dungMinOrderByAggregateInput = {
   tai_khoan?: Prisma.SortOrder
-  tai_khoan_dang_nhap?: Prisma.SortOrder
   ho_ten?: Prisma.SortOrder
   email?: Prisma.SortOrder
   so_dt?: Prisma.SortOrder
-  ma_nhom?: Prisma.SortOrder
   mat_khau?: Prisma.SortOrder
   loai_nguoi_dung?: Prisma.SortOrder
 }
@@ -446,22 +402,18 @@ export type nguoi_dungUpdateOneRequiredWithoutDat_veNestedInput = {
 }
 
 export type nguoi_dungCreateWithoutDat_veInput = {
-  tai_khoan_dang_nhap?: string | null
   ho_ten: string
   email: string
   so_dt?: string | null
-  ma_nhom?: string | null
   mat_khau: string
   loai_nguoi_dung?: string | null
 }
 
 export type nguoi_dungUncheckedCreateWithoutDat_veInput = {
   tai_khoan?: number
-  tai_khoan_dang_nhap?: string | null
   ho_ten: string
   email: string
   so_dt?: string | null
-  ma_nhom?: string | null
   mat_khau: string
   loai_nguoi_dung?: string | null
 }
@@ -483,22 +435,18 @@ export type nguoi_dungUpdateToOneWithWhereWithoutDat_veInput = {
 }
 
 export type nguoi_dungUpdateWithoutDat_veInput = {
-  tai_khoan_dang_nhap?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ho_ten?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   so_dt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ma_nhom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mat_khau?: Prisma.StringFieldUpdateOperationsInput | string
   loai_nguoi_dung?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type nguoi_dungUncheckedUpdateWithoutDat_veInput = {
   tai_khoan?: Prisma.IntFieldUpdateOperationsInput | number
-  tai_khoan_dang_nhap?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ho_ten?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   so_dt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ma_nhom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mat_khau?: Prisma.StringFieldUpdateOperationsInput | string
   loai_nguoi_dung?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -536,11 +484,9 @@ export type Nguoi_dungCountOutputTypeCountDat_veArgs<ExtArgs extends runtime.Typ
 
 export type nguoi_dungSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   tai_khoan?: boolean
-  tai_khoan_dang_nhap?: boolean
   ho_ten?: boolean
   email?: boolean
   so_dt?: boolean
-  ma_nhom?: boolean
   mat_khau?: boolean
   loai_nguoi_dung?: boolean
   dat_ve?: boolean | Prisma.nguoi_dung$dat_veArgs<ExtArgs>
@@ -551,16 +497,14 @@ export type nguoi_dungSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
 
 export type nguoi_dungSelectScalar = {
   tai_khoan?: boolean
-  tai_khoan_dang_nhap?: boolean
   ho_ten?: boolean
   email?: boolean
   so_dt?: boolean
-  ma_nhom?: boolean
   mat_khau?: boolean
   loai_nguoi_dung?: boolean
 }
 
-export type nguoi_dungOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"tai_khoan" | "tai_khoan_dang_nhap" | "ho_ten" | "email" | "so_dt" | "ma_nhom" | "mat_khau" | "loai_nguoi_dung", ExtArgs["result"]["nguoi_dung"]>
+export type nguoi_dungOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"tai_khoan" | "ho_ten" | "email" | "so_dt" | "mat_khau" | "loai_nguoi_dung", ExtArgs["result"]["nguoi_dung"]>
 export type nguoi_dungInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   dat_ve?: boolean | Prisma.nguoi_dung$dat_veArgs<ExtArgs>
   _count?: boolean | Prisma.Nguoi_dungCountOutputTypeDefaultArgs<ExtArgs>
@@ -573,11 +517,9 @@ export type $nguoi_dungPayload<ExtArgs extends runtime.Types.Extensions.Internal
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     tai_khoan: number
-    tai_khoan_dang_nhap: string | null
     ho_ten: string
     email: string
     so_dt: string | null
-    ma_nhom: string | null
     mat_khau: string
     loai_nguoi_dung: string | null
   }, ExtArgs["result"]["nguoi_dung"]>
@@ -951,11 +893,9 @@ export interface Prisma__nguoi_dungClient<T, Null = never, ExtArgs extends runti
  */
 export interface nguoi_dungFieldRefs {
   readonly tai_khoan: Prisma.FieldRef<"nguoi_dung", 'Int'>
-  readonly tai_khoan_dang_nhap: Prisma.FieldRef<"nguoi_dung", 'String'>
   readonly ho_ten: Prisma.FieldRef<"nguoi_dung", 'String'>
   readonly email: Prisma.FieldRef<"nguoi_dung", 'String'>
   readonly so_dt: Prisma.FieldRef<"nguoi_dung", 'String'>
-  readonly ma_nhom: Prisma.FieldRef<"nguoi_dung", 'String'>
   readonly mat_khau: Prisma.FieldRef<"nguoi_dung", 'String'>
   readonly loai_nguoi_dung: Prisma.FieldRef<"nguoi_dung", 'String'>
 }

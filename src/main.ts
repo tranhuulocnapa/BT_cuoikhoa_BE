@@ -41,11 +41,10 @@ async function bootstrap() {
   // Setup Swagger
   setupSwagger(app);
 
-  const port = envConfig.PORT;
-  await app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-    console.log(`Swagger documentation at http://localhost:${port}/api-docs`);
-  });
+  const port = process.env.PORT || envConfig.PORT || 3000;
+  await app.listen(port);
+
+  console.log(`Server running on port ${port}`);
 }
 
 bootstrap();

@@ -170,7 +170,7 @@ export class UsersService {
 
     return { message: 'Xóa người dùng thành công' };
   }
-
+  // test
   private formatUser(user: any) {
     return {
       taiKhoan: user.tai_khoan || '',

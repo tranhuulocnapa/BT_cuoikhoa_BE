@@ -15,6 +15,8 @@ export class ShowtimesService {
   ) {}
 
   async create(dto: CreateShowtimeDto) {
+    const nextMaLichChieu = await this.getNextMaLichChieu();
+
     const movie = await this.prisma.phim.findUnique({
       where: { ma_phim: dto.maPhim },
     });
@@ -33,6 +35,7 @@ export class ShowtimesService {
 
     const showtime = await this.prisma.lich_chieu.create({
       data: {
+        ma_lich_chieu: nextMaLichChieu,
         ma_phim: dto.maPhim,
         ma_rap: dto.maRap,
         ngay_gio_chieu: new Date(dto.ngayChieuGioChieu),
@@ -163,5 +166,14 @@ export class ShowtimesService {
       ngayGioChieu: showtime.ngay_gio_chieu,
       giaVe: showtime.gia_ve,
     };
+  }
+
+  private async getNextMaLichChieu() {
+    const latestShowtime = await this.prisma.lich_chieu.findFirst({
+      orderBy: { ma_lich_chieu: 'desc' },
+      select: { ma_lich_chieu: true },
+    });
+
+    return (latestShowtime?.ma_lich_chieu || 0) + 1;
   }
 }

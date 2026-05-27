@@ -1,0 +1,39 @@
+-- Add id column to all tables as primary key
+-- This migration adds an auto-incrementing id column and changes primary key
+
+-- 1. banner
+ALTER TABLE banner DROP PRIMARY KEY;
+ALTER TABLE banner ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY FIRST;
+
+-- 2. cum_rap
+ALTER TABLE cum_rap DROP PRIMARY KEY;
+ALTER TABLE cum_rap ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY FIRST;
+
+-- 3. dat_ve - composite to single primary key
+ALTER TABLE dat_ve ADD CONSTRAINT uc_dat_ve_booking UNIQUE (tai_khoan, ma_lich_chieu, ma_ghe);
+ALTER TABLE dat_ve DROP PRIMARY KEY;
+ALTER TABLE dat_ve ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY FIRST;
+
+-- 4. ghe
+ALTER TABLE ghe DROP PRIMARY KEY;
+ALTER TABLE ghe ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY FIRST;
+
+-- 5. he_thong_rap
+ALTER TABLE he_thong_rap DROP PRIMARY KEY;
+ALTER TABLE he_thong_rap ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY FIRST;
+
+-- 6. lich_chieu
+ALTER TABLE lich_chieu DROP PRIMARY KEY;
+ALTER TABLE lich_chieu ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY FIRST;
+
+-- 7. nguoi_dung
+ALTER TABLE nguoi_dung DROP PRIMARY KEY;
+ALTER TABLE nguoi_dung ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY FIRST;
+
+-- 8. phim
+ALTER TABLE phim DROP PRIMARY KEY;
+ALTER TABLE phim ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY FIRST;
+
+-- 9. rap_phim
+ALTER TABLE rap_phim DROP PRIMARY KEY;
+ALTER TABLE rap_phim ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY FIRST;

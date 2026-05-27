@@ -15,7 +15,7 @@ export class BookingsService {
     private seatsService: SeatsService,
   ) {}
 
-  async bookSeats(taiKhoan: number, dto: BookSeatDto) {
+  async bookSeats(taiKhoan: string, dto: BookSeatDto) {
     // Kiểm tra lịch chiếu tồn tại
     const showtime = await this.prisma.lich_chieu.findUnique({
       where: { ma_lich_chieu: dto.maLichChieu },
@@ -39,7 +39,7 @@ export class BookingsService {
 
     // Đặt vé
     const bookings: {
-      taiKhoan: number;
+      taiKhoan: string;
       maLichChieu: number;
       maGhe: number;
       tenGhe?: string;
@@ -83,7 +83,7 @@ export class BookingsService {
     return this.seatsService.findByShowtime(maLichChieu);
   }
 
-  async getUserBookings(taiKhoan: number) {
+  async getUserBookings(taiKhoan: string) {
     const bookings = await this.prisma.dat_ve.findMany({
       where: { tai_khoan: taiKhoan },
       include: {
@@ -114,7 +114,7 @@ export class BookingsService {
     }));
   }
 
-  async cancelBooking(taiKhoan: number, maLichChieu: number, maGhe: number) {
+  async cancelBooking(taiKhoan: string, maLichChieu: number, maGhe: number) {
     const booking = await this.prisma.dat_ve.findUnique({
       where: {
         tai_khoan_ma_lich_chieu_ma_ghe: {
@@ -143,7 +143,7 @@ export class BookingsService {
   }
 
   private formatBooking(booking: any): {
-    taiKhoan: number;
+    taiKhoan: string;
     maLichChieu: number;
     maGhe: number;
     tenGhe?: string;

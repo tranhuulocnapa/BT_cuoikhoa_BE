@@ -21,8 +21,11 @@ export class MoviesService {
   constructor(private prisma: PrismaService) {}
 
   async create(dto: CreateMovieDto) {
+    const nextMaPhim = await this.getNextMaPhim();
+
     const movie = await this.prisma.phim.create({
       data: {
+        ma_phim: nextMaPhim,
         ten_phim: dto.tenPhim,
         trailer: dto.trailer || null,
         hinh_anh: dto.hinhAnh || null,
@@ -192,5 +195,14 @@ export class MoviesService {
       banner: movie.banner,
       lichChieu: movie.lich_chieu,
     };
+  }
+
+  private async getNextMaPhim() {
+    const latestMovie = await this.prisma.phim.findFirst({
+      orderBy: { ma_phim: 'desc' },
+      select: { ma_phim: true },
+    });
+
+    return (latestMovie?.ma_phim || 0) + 1;
   }
 }

@@ -27,28 +27,33 @@ export type AggregateBanner = {
 }
 
 export type BannerAvgAggregateOutputType = {
+  id: number | null
   ma_banner: number | null
   ma_phim: number | null
 }
 
 export type BannerSumAggregateOutputType = {
+  id: number | null
   ma_banner: number | null
   ma_phim: number | null
 }
 
 export type BannerMinAggregateOutputType = {
+  id: number | null
   ma_banner: number | null
   ma_phim: number | null
   hinh_anh: string | null
 }
 
 export type BannerMaxAggregateOutputType = {
+  id: number | null
   ma_banner: number | null
   ma_phim: number | null
   hinh_anh: string | null
 }
 
 export type BannerCountAggregateOutputType = {
+  id: number
   ma_banner: number
   ma_phim: number
   hinh_anh: number
@@ -57,28 +62,33 @@ export type BannerCountAggregateOutputType = {
 
 
 export type BannerAvgAggregateInputType = {
+  id?: true
   ma_banner?: true
   ma_phim?: true
 }
 
 export type BannerSumAggregateInputType = {
+  id?: true
   ma_banner?: true
   ma_phim?: true
 }
 
 export type BannerMinAggregateInputType = {
+  id?: true
   ma_banner?: true
   ma_phim?: true
   hinh_anh?: true
 }
 
 export type BannerMaxAggregateInputType = {
+  id?: true
   ma_banner?: true
   ma_phim?: true
   hinh_anh?: true
 }
 
 export type BannerCountAggregateInputType = {
+  id?: true
   ma_banner?: true
   ma_phim?: true
   hinh_anh?: true
@@ -172,6 +182,7 @@ export type bannerGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 export type BannerGroupByOutputType = {
+  id: number
   ma_banner: number
   ma_phim: number
   hinh_anh: string | null
@@ -201,6 +212,7 @@ export type bannerWhereInput = {
   AND?: Prisma.bannerWhereInput | Prisma.bannerWhereInput[]
   OR?: Prisma.bannerWhereInput[]
   NOT?: Prisma.bannerWhereInput | Prisma.bannerWhereInput[]
+  id?: Prisma.IntFilter<"banner"> | number
   ma_banner?: Prisma.IntFilter<"banner"> | number
   ma_phim?: Prisma.IntFilter<"banner"> | number
   hinh_anh?: Prisma.StringNullableFilter<"banner"> | string | null
@@ -208,6 +220,7 @@ export type bannerWhereInput = {
 }
 
 export type bannerOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   ma_banner?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   hinh_anh?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -216,6 +229,7 @@ export type bannerOrderByWithRelationInput = {
 }
 
 export type bannerWhereUniqueInput = Prisma.AtLeast<{
+  id?: number
   ma_banner?: number
   AND?: Prisma.bannerWhereInput | Prisma.bannerWhereInput[]
   OR?: Prisma.bannerWhereInput[]
@@ -223,9 +237,10 @@ export type bannerWhereUniqueInput = Prisma.AtLeast<{
   ma_phim?: Prisma.IntFilter<"banner"> | number
   hinh_anh?: Prisma.StringNullableFilter<"banner"> | string | null
   phim?: Prisma.XOR<Prisma.PhimScalarRelationFilter, Prisma.phimWhereInput>
-}, "ma_banner">
+}, "id" | "ma_banner">
 
 export type bannerOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   ma_banner?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   hinh_anh?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -240,44 +255,52 @@ export type bannerScalarWhereWithAggregatesInput = {
   AND?: Prisma.bannerScalarWhereWithAggregatesInput | Prisma.bannerScalarWhereWithAggregatesInput[]
   OR?: Prisma.bannerScalarWhereWithAggregatesInput[]
   NOT?: Prisma.bannerScalarWhereWithAggregatesInput | Prisma.bannerScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"banner"> | number
   ma_banner?: Prisma.IntWithAggregatesFilter<"banner"> | number
   ma_phim?: Prisma.IntWithAggregatesFilter<"banner"> | number
   hinh_anh?: Prisma.StringNullableWithAggregatesFilter<"banner"> | string | null
 }
 
 export type bannerCreateInput = {
+  ma_banner: number
   hinh_anh?: string | null
   phim: Prisma.phimCreateNestedOneWithoutBannerInput
 }
 
 export type bannerUncheckedCreateInput = {
-  ma_banner?: number
+  id?: number
+  ma_banner: number
   ma_phim: number
   hinh_anh?: string | null
 }
 
 export type bannerUpdateInput = {
+  ma_banner?: Prisma.IntFieldUpdateOperationsInput | number
   hinh_anh?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phim?: Prisma.phimUpdateOneRequiredWithoutBannerNestedInput
 }
 
 export type bannerUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_banner?: Prisma.IntFieldUpdateOperationsInput | number
   ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   hinh_anh?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type bannerCreateManyInput = {
-  ma_banner?: number
+  id?: number
+  ma_banner: number
   ma_phim: number
   hinh_anh?: string | null
 }
 
 export type bannerUpdateManyMutationInput = {
+  ma_banner?: Prisma.IntFieldUpdateOperationsInput | number
   hinh_anh?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type bannerUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_banner?: Prisma.IntFieldUpdateOperationsInput | number
   ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   hinh_anh?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -290,29 +313,34 @@ export type bannerOrderByRelevanceInput = {
 }
 
 export type bannerCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_banner?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   hinh_anh?: Prisma.SortOrder
 }
 
 export type bannerAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_banner?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
 }
 
 export type bannerMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_banner?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   hinh_anh?: Prisma.SortOrder
 }
 
 export type bannerMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_banner?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   hinh_anh?: Prisma.SortOrder
 }
 
 export type bannerSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_banner?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
 }
@@ -327,16 +355,16 @@ export type bannerOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type bannerCreateNestedManyWithoutPhimInput = {
@@ -382,11 +410,13 @@ export type bannerUncheckedUpdateManyWithoutPhimNestedInput = {
 }
 
 export type bannerCreateWithoutPhimInput = {
+  ma_banner: number
   hinh_anh?: string | null
 }
 
 export type bannerUncheckedCreateWithoutPhimInput = {
-  ma_banner?: number
+  id?: number
+  ma_banner: number
   hinh_anh?: string | null
 }
 
@@ -420,26 +450,31 @@ export type bannerScalarWhereInput = {
   AND?: Prisma.bannerScalarWhereInput | Prisma.bannerScalarWhereInput[]
   OR?: Prisma.bannerScalarWhereInput[]
   NOT?: Prisma.bannerScalarWhereInput | Prisma.bannerScalarWhereInput[]
+  id?: Prisma.IntFilter<"banner"> | number
   ma_banner?: Prisma.IntFilter<"banner"> | number
   ma_phim?: Prisma.IntFilter<"banner"> | number
   hinh_anh?: Prisma.StringNullableFilter<"banner"> | string | null
 }
 
 export type bannerCreateManyPhimInput = {
-  ma_banner?: number
+  id?: number
+  ma_banner: number
   hinh_anh?: string | null
 }
 
 export type bannerUpdateWithoutPhimInput = {
+  ma_banner?: Prisma.IntFieldUpdateOperationsInput | number
   hinh_anh?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type bannerUncheckedUpdateWithoutPhimInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_banner?: Prisma.IntFieldUpdateOperationsInput | number
   hinh_anh?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type bannerUncheckedUpdateManyWithoutPhimInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_banner?: Prisma.IntFieldUpdateOperationsInput | number
   hinh_anh?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -447,6 +482,7 @@ export type bannerUncheckedUpdateManyWithoutPhimInput = {
 
 
 export type bannerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   ma_banner?: boolean
   ma_phim?: boolean
   hinh_anh?: boolean
@@ -456,12 +492,13 @@ export type bannerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 
 
 export type bannerSelectScalar = {
+  id?: boolean
   ma_banner?: boolean
   ma_phim?: boolean
   hinh_anh?: boolean
 }
 
-export type bannerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ma_banner" | "ma_phim" | "hinh_anh", ExtArgs["result"]["banner"]>
+export type bannerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ma_banner" | "ma_phim" | "hinh_anh", ExtArgs["result"]["banner"]>
 export type bannerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   phim?: boolean | Prisma.phimDefaultArgs<ExtArgs>
 }
@@ -472,6 +509,7 @@ export type $bannerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     phim: Prisma.$phimPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     ma_banner: number
     ma_phim: number
     hinh_anh: string | null
@@ -558,8 +596,8 @@ export interface bannerDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * // Get first 10 Banners
    * const banners = await prisma.banner.findMany({ take: 10 })
    * 
-   * // Only select the `ma_banner`
-   * const bannerWithMa_bannerOnly = await prisma.banner.findMany({ select: { ma_banner: true } })
+   * // Only select the `id`
+   * const bannerWithIdOnly = await prisma.banner.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends bannerFindManyArgs>(args?: Prisma.SelectSubset<T, bannerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$bannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -845,6 +883,7 @@ export interface Prisma__bannerClient<T, Null = never, ExtArgs extends runtime.T
  * Fields of the banner model
  */
 export interface bannerFieldRefs {
+  readonly id: Prisma.FieldRef<"banner", 'Int'>
   readonly ma_banner: Prisma.FieldRef<"banner", 'Int'>
   readonly ma_phim: Prisma.FieldRef<"banner", 'Int'>
   readonly hinh_anh: Prisma.FieldRef<"banner", 'String'>

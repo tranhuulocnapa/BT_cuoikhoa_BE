@@ -6,7 +6,6 @@ import { existsSync, mkdirSync } from 'fs';
 import { AppModule } from './app.module';
 import { setupSwagger } from './configs/swagger.config';
 import { envConfig } from './configs/env.config';
-import { TokenCybersoftGuard } from './common/guards/token-cybersoft.guard';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -17,14 +16,12 @@ async function bootstrap() {
   // Set global prefix
   app.setGlobalPrefix('api');
 
-  // Require Cybersoft token header on all API requests
-  app.useGlobalGuards(new TokenCybersoftGuard());
-
   // Add validation pipe
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
-      forbidNonWhitelisted: true,
+      forbidNonWhitelisted: false,
       transform: true,
       transformOptions: {
         enableImplicitConversion: true,

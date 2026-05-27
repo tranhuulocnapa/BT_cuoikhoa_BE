@@ -27,16 +27,19 @@ export type AggregateGhe = {
 }
 
 export type GheAvgAggregateOutputType = {
+  id: number | null
   ma_ghe: number | null
   ma_rap: number | null
 }
 
 export type GheSumAggregateOutputType = {
+  id: number | null
   ma_ghe: number | null
   ma_rap: number | null
 }
 
 export type GheMinAggregateOutputType = {
+  id: number | null
   ma_ghe: number | null
   ten_ghe: string | null
   loai_ghe: string | null
@@ -44,6 +47,7 @@ export type GheMinAggregateOutputType = {
 }
 
 export type GheMaxAggregateOutputType = {
+  id: number | null
   ma_ghe: number | null
   ten_ghe: string | null
   loai_ghe: string | null
@@ -51,6 +55,7 @@ export type GheMaxAggregateOutputType = {
 }
 
 export type GheCountAggregateOutputType = {
+  id: number
   ma_ghe: number
   ten_ghe: number
   loai_ghe: number
@@ -60,16 +65,19 @@ export type GheCountAggregateOutputType = {
 
 
 export type GheAvgAggregateInputType = {
+  id?: true
   ma_ghe?: true
   ma_rap?: true
 }
 
 export type GheSumAggregateInputType = {
+  id?: true
   ma_ghe?: true
   ma_rap?: true
 }
 
 export type GheMinAggregateInputType = {
+  id?: true
   ma_ghe?: true
   ten_ghe?: true
   loai_ghe?: true
@@ -77,6 +85,7 @@ export type GheMinAggregateInputType = {
 }
 
 export type GheMaxAggregateInputType = {
+  id?: true
   ma_ghe?: true
   ten_ghe?: true
   loai_ghe?: true
@@ -84,6 +93,7 @@ export type GheMaxAggregateInputType = {
 }
 
 export type GheCountAggregateInputType = {
+  id?: true
   ma_ghe?: true
   ten_ghe?: true
   loai_ghe?: true
@@ -178,6 +188,7 @@ export type gheGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
 }
 
 export type GheGroupByOutputType = {
+  id: number
   ma_ghe: number
   ten_ghe: string
   loai_ghe: string | null
@@ -208,6 +219,7 @@ export type gheWhereInput = {
   AND?: Prisma.gheWhereInput | Prisma.gheWhereInput[]
   OR?: Prisma.gheWhereInput[]
   NOT?: Prisma.gheWhereInput | Prisma.gheWhereInput[]
+  id?: Prisma.IntFilter<"ghe"> | number
   ma_ghe?: Prisma.IntFilter<"ghe"> | number
   ten_ghe?: Prisma.StringFilter<"ghe"> | string
   loai_ghe?: Prisma.StringNullableFilter<"ghe"> | string | null
@@ -217,6 +229,7 @@ export type gheWhereInput = {
 }
 
 export type gheOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
   ten_ghe?: Prisma.SortOrder
   loai_ghe?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -227,6 +240,7 @@ export type gheOrderByWithRelationInput = {
 }
 
 export type gheWhereUniqueInput = Prisma.AtLeast<{
+  id?: number
   ma_ghe?: number
   AND?: Prisma.gheWhereInput | Prisma.gheWhereInput[]
   OR?: Prisma.gheWhereInput[]
@@ -236,9 +250,10 @@ export type gheWhereUniqueInput = Prisma.AtLeast<{
   ma_rap?: Prisma.IntFilter<"ghe"> | number
   dat_ve?: Prisma.Dat_veListRelationFilter
   rap_phim?: Prisma.XOR<Prisma.Rap_phimScalarRelationFilter, Prisma.rap_phimWhereInput>
-}, "ma_ghe">
+}, "id" | "ma_ghe">
 
 export type gheOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
   ten_ghe?: Prisma.SortOrder
   loai_ghe?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -254,6 +269,7 @@ export type gheScalarWhereWithAggregatesInput = {
   AND?: Prisma.gheScalarWhereWithAggregatesInput | Prisma.gheScalarWhereWithAggregatesInput[]
   OR?: Prisma.gheScalarWhereWithAggregatesInput[]
   NOT?: Prisma.gheScalarWhereWithAggregatesInput | Prisma.gheScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"ghe"> | number
   ma_ghe?: Prisma.IntWithAggregatesFilter<"ghe"> | number
   ten_ghe?: Prisma.StringWithAggregatesFilter<"ghe"> | string
   loai_ghe?: Prisma.StringNullableWithAggregatesFilter<"ghe"> | string | null
@@ -261,6 +277,7 @@ export type gheScalarWhereWithAggregatesInput = {
 }
 
 export type gheCreateInput = {
+  ma_ghe: number
   ten_ghe: string
   loai_ghe?: string | null
   dat_ve?: Prisma.dat_veCreateNestedManyWithoutGheInput
@@ -268,7 +285,8 @@ export type gheCreateInput = {
 }
 
 export type gheUncheckedCreateInput = {
-  ma_ghe?: number
+  id?: number
+  ma_ghe: number
   ten_ghe: string
   loai_ghe?: string | null
   ma_rap: number
@@ -276,6 +294,7 @@ export type gheUncheckedCreateInput = {
 }
 
 export type gheUpdateInput = {
+  ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
   ten_ghe?: Prisma.StringFieldUpdateOperationsInput | string
   loai_ghe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dat_ve?: Prisma.dat_veUpdateManyWithoutGheNestedInput
@@ -283,6 +302,7 @@ export type gheUpdateInput = {
 }
 
 export type gheUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
   ten_ghe?: Prisma.StringFieldUpdateOperationsInput | string
   loai_ghe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -291,18 +311,21 @@ export type gheUncheckedUpdateInput = {
 }
 
 export type gheCreateManyInput = {
-  ma_ghe?: number
+  id?: number
+  ma_ghe: number
   ten_ghe: string
   loai_ghe?: string | null
   ma_rap: number
 }
 
 export type gheUpdateManyMutationInput = {
+  ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
   ten_ghe?: Prisma.StringFieldUpdateOperationsInput | string
   loai_ghe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gheUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
   ten_ghe?: Prisma.StringFieldUpdateOperationsInput | string
   loai_ghe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -321,6 +344,7 @@ export type gheOrderByRelevanceInput = {
 }
 
 export type gheCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
   ten_ghe?: Prisma.SortOrder
   loai_ghe?: Prisma.SortOrder
@@ -328,11 +352,13 @@ export type gheCountOrderByAggregateInput = {
 }
 
 export type gheAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
 }
 
 export type gheMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
   ten_ghe?: Prisma.SortOrder
   loai_ghe?: Prisma.SortOrder
@@ -340,6 +366,7 @@ export type gheMaxOrderByAggregateInput = {
 }
 
 export type gheMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
   ten_ghe?: Prisma.SortOrder
   loai_ghe?: Prisma.SortOrder
@@ -347,6 +374,7 @@ export type gheMinOrderByAggregateInput = {
 }
 
 export type gheSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
 }
@@ -418,13 +446,15 @@ export type gheUncheckedUpdateManyWithoutRap_phimNestedInput = {
 }
 
 export type gheCreateWithoutDat_veInput = {
+  ma_ghe: number
   ten_ghe: string
   loai_ghe?: string | null
   rap_phim: Prisma.rap_phimCreateNestedOneWithoutGheInput
 }
 
 export type gheUncheckedCreateWithoutDat_veInput = {
-  ma_ghe?: number
+  id?: number
+  ma_ghe: number
   ten_ghe: string
   loai_ghe?: string | null
   ma_rap: number
@@ -447,12 +477,14 @@ export type gheUpdateToOneWithWhereWithoutDat_veInput = {
 }
 
 export type gheUpdateWithoutDat_veInput = {
+  ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
   ten_ghe?: Prisma.StringFieldUpdateOperationsInput | string
   loai_ghe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rap_phim?: Prisma.rap_phimUpdateOneRequiredWithoutGheNestedInput
 }
 
 export type gheUncheckedUpdateWithoutDat_veInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
   ten_ghe?: Prisma.StringFieldUpdateOperationsInput | string
   loai_ghe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -460,13 +492,15 @@ export type gheUncheckedUpdateWithoutDat_veInput = {
 }
 
 export type gheCreateWithoutRap_phimInput = {
+  ma_ghe: number
   ten_ghe: string
   loai_ghe?: string | null
   dat_ve?: Prisma.dat_veCreateNestedManyWithoutGheInput
 }
 
 export type gheUncheckedCreateWithoutRap_phimInput = {
-  ma_ghe?: number
+  id?: number
+  ma_ghe: number
   ten_ghe: string
   loai_ghe?: string | null
   dat_ve?: Prisma.dat_veUncheckedCreateNestedManyWithoutGheInput
@@ -502,6 +536,7 @@ export type gheScalarWhereInput = {
   AND?: Prisma.gheScalarWhereInput | Prisma.gheScalarWhereInput[]
   OR?: Prisma.gheScalarWhereInput[]
   NOT?: Prisma.gheScalarWhereInput | Prisma.gheScalarWhereInput[]
+  id?: Prisma.IntFilter<"ghe"> | number
   ma_ghe?: Prisma.IntFilter<"ghe"> | number
   ten_ghe?: Prisma.StringFilter<"ghe"> | string
   loai_ghe?: Prisma.StringNullableFilter<"ghe"> | string | null
@@ -509,18 +544,21 @@ export type gheScalarWhereInput = {
 }
 
 export type gheCreateManyRap_phimInput = {
-  ma_ghe?: number
+  id?: number
+  ma_ghe: number
   ten_ghe: string
   loai_ghe?: string | null
 }
 
 export type gheUpdateWithoutRap_phimInput = {
+  ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
   ten_ghe?: Prisma.StringFieldUpdateOperationsInput | string
   loai_ghe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dat_ve?: Prisma.dat_veUpdateManyWithoutGheNestedInput
 }
 
 export type gheUncheckedUpdateWithoutRap_phimInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
   ten_ghe?: Prisma.StringFieldUpdateOperationsInput | string
   loai_ghe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -528,6 +566,7 @@ export type gheUncheckedUpdateWithoutRap_phimInput = {
 }
 
 export type gheUncheckedUpdateManyWithoutRap_phimInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
   ten_ghe?: Prisma.StringFieldUpdateOperationsInput | string
   loai_ghe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -565,6 +604,7 @@ export type GheCountOutputTypeCountDat_veArgs<ExtArgs extends runtime.Types.Exte
 
 
 export type gheSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   ma_ghe?: boolean
   ten_ghe?: boolean
   loai_ghe?: boolean
@@ -577,13 +617,14 @@ export type gheSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
 
 
 export type gheSelectScalar = {
+  id?: boolean
   ma_ghe?: boolean
   ten_ghe?: boolean
   loai_ghe?: boolean
   ma_rap?: boolean
 }
 
-export type gheOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ma_ghe" | "ten_ghe" | "loai_ghe" | "ma_rap", ExtArgs["result"]["ghe"]>
+export type gheOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ma_ghe" | "ten_ghe" | "loai_ghe" | "ma_rap", ExtArgs["result"]["ghe"]>
 export type gheInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   dat_ve?: boolean | Prisma.ghe$dat_veArgs<ExtArgs>
   rap_phim?: boolean | Prisma.rap_phimDefaultArgs<ExtArgs>
@@ -597,6 +638,7 @@ export type $ghePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     rap_phim: Prisma.$rap_phimPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     ma_ghe: number
     ten_ghe: string
     loai_ghe: string | null
@@ -684,8 +726,8 @@ export interface gheDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * // Get first 10 Ghes
    * const ghes = await prisma.ghe.findMany({ take: 10 })
    * 
-   * // Only select the `ma_ghe`
-   * const gheWithMa_gheOnly = await prisma.ghe.findMany({ select: { ma_ghe: true } })
+   * // Only select the `id`
+   * const gheWithIdOnly = await prisma.ghe.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends gheFindManyArgs>(args?: Prisma.SelectSubset<T, gheFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ghePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -972,6 +1014,7 @@ export interface Prisma__gheClient<T, Null = never, ExtArgs extends runtime.Type
  * Fields of the ghe model
  */
 export interface gheFieldRefs {
+  readonly id: Prisma.FieldRef<"ghe", 'Int'>
   readonly ma_ghe: Prisma.FieldRef<"ghe", 'Int'>
   readonly ten_ghe: Prisma.FieldRef<"ghe", 'String'>
   readonly loai_ghe: Prisma.FieldRef<"ghe", 'String'>

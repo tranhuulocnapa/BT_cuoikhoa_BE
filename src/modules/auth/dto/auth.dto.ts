@@ -8,14 +8,14 @@ export class RegisterDto {
   })
   @IsString()
   @MinLength(3)
-  taiKhoan: string;
+  taiKhoan!: string;
 
   @ApiProperty({
     example: 'user@example.com',
     description: 'Email',
   })
   @IsEmail()
-  email: string;
+  email!: string;
 
   @ApiProperty({
     example: 'GP01',
@@ -41,14 +41,14 @@ export class RegisterDto {
   })
   @IsString()
   @MinLength(6)
-  matKhau: string;
+  matKhau!: string;
 
   @ApiProperty({
     example: 'Nguyễn Văn A',
     description: 'Họ và tên',
   })
   @IsString()
-  hoTen: string;
+  hoTen!: string;
 
   @ApiProperty({
     example: '0123456789',
@@ -66,14 +66,14 @@ export class LoginDto {
     description: 'Tài khoản đăng nhập',
   })
   @IsString()
-  taiKhoan: string;
+  taiKhoan!: string;
 
   @ApiProperty({
     example: 'password123',
     description: 'Mật khẩu',
   })
   @IsString()
-  matKhau: string;
+  matKhau!: string;
 }
 
 export class LoginResponseDto {
@@ -81,7 +81,7 @@ export class LoginResponseDto {
     example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
     description: 'JWT access token',
   })
-  accessToken: string;
+  accessToken!: string;
 
   @ApiProperty({
     example: {
@@ -92,7 +92,7 @@ export class LoginResponseDto {
     },
     description: 'User information',
   })
-  user: {
+  user!: {
     taiKhoan: string;
     email: string;
     hoTen: string;

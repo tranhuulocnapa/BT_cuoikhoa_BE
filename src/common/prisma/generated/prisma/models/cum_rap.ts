@@ -27,16 +27,19 @@ export type AggregateCum_rap = {
 }
 
 export type Cum_rapAvgAggregateOutputType = {
+  id: number | null
   ma_cum_rap: number | null
   ma_he_thong_rap: number | null
 }
 
 export type Cum_rapSumAggregateOutputType = {
+  id: number | null
   ma_cum_rap: number | null
   ma_he_thong_rap: number | null
 }
 
 export type Cum_rapMinAggregateOutputType = {
+  id: number | null
   ma_cum_rap: number | null
   ten_cum_rap: string | null
   dia_chi: string | null
@@ -44,6 +47,7 @@ export type Cum_rapMinAggregateOutputType = {
 }
 
 export type Cum_rapMaxAggregateOutputType = {
+  id: number | null
   ma_cum_rap: number | null
   ten_cum_rap: string | null
   dia_chi: string | null
@@ -51,6 +55,7 @@ export type Cum_rapMaxAggregateOutputType = {
 }
 
 export type Cum_rapCountAggregateOutputType = {
+  id: number
   ma_cum_rap: number
   ten_cum_rap: number
   dia_chi: number
@@ -60,16 +65,19 @@ export type Cum_rapCountAggregateOutputType = {
 
 
 export type Cum_rapAvgAggregateInputType = {
+  id?: true
   ma_cum_rap?: true
   ma_he_thong_rap?: true
 }
 
 export type Cum_rapSumAggregateInputType = {
+  id?: true
   ma_cum_rap?: true
   ma_he_thong_rap?: true
 }
 
 export type Cum_rapMinAggregateInputType = {
+  id?: true
   ma_cum_rap?: true
   ten_cum_rap?: true
   dia_chi?: true
@@ -77,6 +85,7 @@ export type Cum_rapMinAggregateInputType = {
 }
 
 export type Cum_rapMaxAggregateInputType = {
+  id?: true
   ma_cum_rap?: true
   ten_cum_rap?: true
   dia_chi?: true
@@ -84,6 +93,7 @@ export type Cum_rapMaxAggregateInputType = {
 }
 
 export type Cum_rapCountAggregateInputType = {
+  id?: true
   ma_cum_rap?: true
   ten_cum_rap?: true
   dia_chi?: true
@@ -178,6 +188,7 @@ export type cum_rapGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 export type Cum_rapGroupByOutputType = {
+  id: number
   ma_cum_rap: number
   ten_cum_rap: string
   dia_chi: string | null
@@ -208,6 +219,7 @@ export type cum_rapWhereInput = {
   AND?: Prisma.cum_rapWhereInput | Prisma.cum_rapWhereInput[]
   OR?: Prisma.cum_rapWhereInput[]
   NOT?: Prisma.cum_rapWhereInput | Prisma.cum_rapWhereInput[]
+  id?: Prisma.IntFilter<"cum_rap"> | number
   ma_cum_rap?: Prisma.IntFilter<"cum_rap"> | number
   ten_cum_rap?: Prisma.StringFilter<"cum_rap"> | string
   dia_chi?: Prisma.StringNullableFilter<"cum_rap"> | string | null
@@ -217,6 +229,7 @@ export type cum_rapWhereInput = {
 }
 
 export type cum_rapOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
   ten_cum_rap?: Prisma.SortOrder
   dia_chi?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -227,6 +240,7 @@ export type cum_rapOrderByWithRelationInput = {
 }
 
 export type cum_rapWhereUniqueInput = Prisma.AtLeast<{
+  id?: number
   ma_cum_rap?: number
   AND?: Prisma.cum_rapWhereInput | Prisma.cum_rapWhereInput[]
   OR?: Prisma.cum_rapWhereInput[]
@@ -236,9 +250,10 @@ export type cum_rapWhereUniqueInput = Prisma.AtLeast<{
   ma_he_thong_rap?: Prisma.IntFilter<"cum_rap"> | number
   he_thong_rap?: Prisma.XOR<Prisma.He_thong_rapScalarRelationFilter, Prisma.he_thong_rapWhereInput>
   rap_phim?: Prisma.Rap_phimListRelationFilter
-}, "ma_cum_rap">
+}, "id" | "ma_cum_rap">
 
 export type cum_rapOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
   ten_cum_rap?: Prisma.SortOrder
   dia_chi?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -254,6 +269,7 @@ export type cum_rapScalarWhereWithAggregatesInput = {
   AND?: Prisma.cum_rapScalarWhereWithAggregatesInput | Prisma.cum_rapScalarWhereWithAggregatesInput[]
   OR?: Prisma.cum_rapScalarWhereWithAggregatesInput[]
   NOT?: Prisma.cum_rapScalarWhereWithAggregatesInput | Prisma.cum_rapScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"cum_rap"> | number
   ma_cum_rap?: Prisma.IntWithAggregatesFilter<"cum_rap"> | number
   ten_cum_rap?: Prisma.StringWithAggregatesFilter<"cum_rap"> | string
   dia_chi?: Prisma.StringNullableWithAggregatesFilter<"cum_rap"> | string | null
@@ -261,6 +277,7 @@ export type cum_rapScalarWhereWithAggregatesInput = {
 }
 
 export type cum_rapCreateInput = {
+  ma_cum_rap: number
   ten_cum_rap: string
   dia_chi?: string | null
   he_thong_rap: Prisma.he_thong_rapCreateNestedOneWithoutCum_rapInput
@@ -268,7 +285,8 @@ export type cum_rapCreateInput = {
 }
 
 export type cum_rapUncheckedCreateInput = {
-  ma_cum_rap?: number
+  id?: number
+  ma_cum_rap: number
   ten_cum_rap: string
   dia_chi?: string | null
   ma_he_thong_rap: number
@@ -276,6 +294,7 @@ export type cum_rapUncheckedCreateInput = {
 }
 
 export type cum_rapUpdateInput = {
+  ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_cum_rap?: Prisma.StringFieldUpdateOperationsInput | string
   dia_chi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   he_thong_rap?: Prisma.he_thong_rapUpdateOneRequiredWithoutCum_rapNestedInput
@@ -283,6 +302,7 @@ export type cum_rapUpdateInput = {
 }
 
 export type cum_rapUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_cum_rap?: Prisma.StringFieldUpdateOperationsInput | string
   dia_chi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -291,18 +311,21 @@ export type cum_rapUncheckedUpdateInput = {
 }
 
 export type cum_rapCreateManyInput = {
-  ma_cum_rap?: number
+  id?: number
+  ma_cum_rap: number
   ten_cum_rap: string
   dia_chi?: string | null
   ma_he_thong_rap: number
 }
 
 export type cum_rapUpdateManyMutationInput = {
+  ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_cum_rap?: Prisma.StringFieldUpdateOperationsInput | string
   dia_chi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type cum_rapUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_cum_rap?: Prisma.StringFieldUpdateOperationsInput | string
   dia_chi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -316,6 +339,7 @@ export type cum_rapOrderByRelevanceInput = {
 }
 
 export type cum_rapCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
   ten_cum_rap?: Prisma.SortOrder
   dia_chi?: Prisma.SortOrder
@@ -323,11 +347,13 @@ export type cum_rapCountOrderByAggregateInput = {
 }
 
 export type cum_rapAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
   ma_he_thong_rap?: Prisma.SortOrder
 }
 
 export type cum_rapMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
   ten_cum_rap?: Prisma.SortOrder
   dia_chi?: Prisma.SortOrder
@@ -335,6 +361,7 @@ export type cum_rapMaxOrderByAggregateInput = {
 }
 
 export type cum_rapMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
   ten_cum_rap?: Prisma.SortOrder
   dia_chi?: Prisma.SortOrder
@@ -342,6 +369,7 @@ export type cum_rapMinOrderByAggregateInput = {
 }
 
 export type cum_rapSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
   ma_he_thong_rap?: Prisma.SortOrder
 }
@@ -422,13 +450,15 @@ export type cum_rapUpdateOneRequiredWithoutRap_phimNestedInput = {
 }
 
 export type cum_rapCreateWithoutHe_thong_rapInput = {
+  ma_cum_rap: number
   ten_cum_rap: string
   dia_chi?: string | null
   rap_phim?: Prisma.rap_phimCreateNestedManyWithoutCum_rapInput
 }
 
 export type cum_rapUncheckedCreateWithoutHe_thong_rapInput = {
-  ma_cum_rap?: number
+  id?: number
+  ma_cum_rap: number
   ten_cum_rap: string
   dia_chi?: string | null
   rap_phim?: Prisma.rap_phimUncheckedCreateNestedManyWithoutCum_rapInput
@@ -464,6 +494,7 @@ export type cum_rapScalarWhereInput = {
   AND?: Prisma.cum_rapScalarWhereInput | Prisma.cum_rapScalarWhereInput[]
   OR?: Prisma.cum_rapScalarWhereInput[]
   NOT?: Prisma.cum_rapScalarWhereInput | Prisma.cum_rapScalarWhereInput[]
+  id?: Prisma.IntFilter<"cum_rap"> | number
   ma_cum_rap?: Prisma.IntFilter<"cum_rap"> | number
   ten_cum_rap?: Prisma.StringFilter<"cum_rap"> | string
   dia_chi?: Prisma.StringNullableFilter<"cum_rap"> | string | null
@@ -471,13 +502,15 @@ export type cum_rapScalarWhereInput = {
 }
 
 export type cum_rapCreateWithoutRap_phimInput = {
+  ma_cum_rap: number
   ten_cum_rap: string
   dia_chi?: string | null
   he_thong_rap: Prisma.he_thong_rapCreateNestedOneWithoutCum_rapInput
 }
 
 export type cum_rapUncheckedCreateWithoutRap_phimInput = {
-  ma_cum_rap?: number
+  id?: number
+  ma_cum_rap: number
   ten_cum_rap: string
   dia_chi?: string | null
   ma_he_thong_rap: number
@@ -500,12 +533,14 @@ export type cum_rapUpdateToOneWithWhereWithoutRap_phimInput = {
 }
 
 export type cum_rapUpdateWithoutRap_phimInput = {
+  ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_cum_rap?: Prisma.StringFieldUpdateOperationsInput | string
   dia_chi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   he_thong_rap?: Prisma.he_thong_rapUpdateOneRequiredWithoutCum_rapNestedInput
 }
 
 export type cum_rapUncheckedUpdateWithoutRap_phimInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_cum_rap?: Prisma.StringFieldUpdateOperationsInput | string
   dia_chi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -513,18 +548,21 @@ export type cum_rapUncheckedUpdateWithoutRap_phimInput = {
 }
 
 export type cum_rapCreateManyHe_thong_rapInput = {
-  ma_cum_rap?: number
+  id?: number
+  ma_cum_rap: number
   ten_cum_rap: string
   dia_chi?: string | null
 }
 
 export type cum_rapUpdateWithoutHe_thong_rapInput = {
+  ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_cum_rap?: Prisma.StringFieldUpdateOperationsInput | string
   dia_chi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rap_phim?: Prisma.rap_phimUpdateManyWithoutCum_rapNestedInput
 }
 
 export type cum_rapUncheckedUpdateWithoutHe_thong_rapInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_cum_rap?: Prisma.StringFieldUpdateOperationsInput | string
   dia_chi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -532,6 +570,7 @@ export type cum_rapUncheckedUpdateWithoutHe_thong_rapInput = {
 }
 
 export type cum_rapUncheckedUpdateManyWithoutHe_thong_rapInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_cum_rap?: Prisma.StringFieldUpdateOperationsInput | string
   dia_chi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -569,6 +608,7 @@ export type Cum_rapCountOutputTypeCountRap_phimArgs<ExtArgs extends runtime.Type
 
 
 export type cum_rapSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   ma_cum_rap?: boolean
   ten_cum_rap?: boolean
   dia_chi?: boolean
@@ -581,13 +621,14 @@ export type cum_rapSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 
 
 export type cum_rapSelectScalar = {
+  id?: boolean
   ma_cum_rap?: boolean
   ten_cum_rap?: boolean
   dia_chi?: boolean
   ma_he_thong_rap?: boolean
 }
 
-export type cum_rapOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ma_cum_rap" | "ten_cum_rap" | "dia_chi" | "ma_he_thong_rap", ExtArgs["result"]["cum_rap"]>
+export type cum_rapOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ma_cum_rap" | "ten_cum_rap" | "dia_chi" | "ma_he_thong_rap", ExtArgs["result"]["cum_rap"]>
 export type cum_rapInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   he_thong_rap?: boolean | Prisma.he_thong_rapDefaultArgs<ExtArgs>
   rap_phim?: boolean | Prisma.cum_rap$rap_phimArgs<ExtArgs>
@@ -601,6 +642,7 @@ export type $cum_rapPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     rap_phim: Prisma.$rap_phimPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     ma_cum_rap: number
     ten_cum_rap: string
     dia_chi: string | null
@@ -688,8 +730,8 @@ export interface cum_rapDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * // Get first 10 Cum_raps
    * const cum_raps = await prisma.cum_rap.findMany({ take: 10 })
    * 
-   * // Only select the `ma_cum_rap`
-   * const cum_rapWithMa_cum_rapOnly = await prisma.cum_rap.findMany({ select: { ma_cum_rap: true } })
+   * // Only select the `id`
+   * const cum_rapWithIdOnly = await prisma.cum_rap.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends cum_rapFindManyArgs>(args?: Prisma.SelectSubset<T, cum_rapFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$cum_rapPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -976,6 +1018,7 @@ export interface Prisma__cum_rapClient<T, Null = never, ExtArgs extends runtime.
  * Fields of the cum_rap model
  */
 export interface cum_rapFieldRefs {
+  readonly id: Prisma.FieldRef<"cum_rap", 'Int'>
   readonly ma_cum_rap: Prisma.FieldRef<"cum_rap", 'Int'>
   readonly ten_cum_rap: Prisma.FieldRef<"cum_rap", 'String'>
   readonly dia_chi: Prisma.FieldRef<"cum_rap", 'String'>

@@ -27,28 +27,33 @@ export type AggregateRap_phim = {
 }
 
 export type Rap_phimAvgAggregateOutputType = {
+  id: number | null
   ma_rap: number | null
   ma_cum_rap: number | null
 }
 
 export type Rap_phimSumAggregateOutputType = {
+  id: number | null
   ma_rap: number | null
   ma_cum_rap: number | null
 }
 
 export type Rap_phimMinAggregateOutputType = {
+  id: number | null
   ma_rap: number | null
   ten_rap: string | null
   ma_cum_rap: number | null
 }
 
 export type Rap_phimMaxAggregateOutputType = {
+  id: number | null
   ma_rap: number | null
   ten_rap: string | null
   ma_cum_rap: number | null
 }
 
 export type Rap_phimCountAggregateOutputType = {
+  id: number
   ma_rap: number
   ten_rap: number
   ma_cum_rap: number
@@ -57,28 +62,33 @@ export type Rap_phimCountAggregateOutputType = {
 
 
 export type Rap_phimAvgAggregateInputType = {
+  id?: true
   ma_rap?: true
   ma_cum_rap?: true
 }
 
 export type Rap_phimSumAggregateInputType = {
+  id?: true
   ma_rap?: true
   ma_cum_rap?: true
 }
 
 export type Rap_phimMinAggregateInputType = {
+  id?: true
   ma_rap?: true
   ten_rap?: true
   ma_cum_rap?: true
 }
 
 export type Rap_phimMaxAggregateInputType = {
+  id?: true
   ma_rap?: true
   ten_rap?: true
   ma_cum_rap?: true
 }
 
 export type Rap_phimCountAggregateInputType = {
+  id?: true
   ma_rap?: true
   ten_rap?: true
   ma_cum_rap?: true
@@ -172,6 +182,7 @@ export type rap_phimGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 export type Rap_phimGroupByOutputType = {
+  id: number
   ma_rap: number
   ten_rap: string
   ma_cum_rap: number
@@ -201,6 +212,7 @@ export type rap_phimWhereInput = {
   AND?: Prisma.rap_phimWhereInput | Prisma.rap_phimWhereInput[]
   OR?: Prisma.rap_phimWhereInput[]
   NOT?: Prisma.rap_phimWhereInput | Prisma.rap_phimWhereInput[]
+  id?: Prisma.IntFilter<"rap_phim"> | number
   ma_rap?: Prisma.IntFilter<"rap_phim"> | number
   ten_rap?: Prisma.StringFilter<"rap_phim"> | string
   ma_cum_rap?: Prisma.IntFilter<"rap_phim"> | number
@@ -210,6 +222,7 @@ export type rap_phimWhereInput = {
 }
 
 export type rap_phimOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ten_rap?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
@@ -220,6 +233,7 @@ export type rap_phimOrderByWithRelationInput = {
 }
 
 export type rap_phimWhereUniqueInput = Prisma.AtLeast<{
+  id?: number
   ma_rap?: number
   AND?: Prisma.rap_phimWhereInput | Prisma.rap_phimWhereInput[]
   OR?: Prisma.rap_phimWhereInput[]
@@ -229,9 +243,10 @@ export type rap_phimWhereUniqueInput = Prisma.AtLeast<{
   ghe?: Prisma.GheListRelationFilter
   lich_chieu?: Prisma.Lich_chieuListRelationFilter
   cum_rap?: Prisma.XOR<Prisma.Cum_rapScalarRelationFilter, Prisma.cum_rapWhereInput>
-}, "ma_rap">
+}, "id" | "ma_rap">
 
 export type rap_phimOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ten_rap?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
@@ -246,12 +261,14 @@ export type rap_phimScalarWhereWithAggregatesInput = {
   AND?: Prisma.rap_phimScalarWhereWithAggregatesInput | Prisma.rap_phimScalarWhereWithAggregatesInput[]
   OR?: Prisma.rap_phimScalarWhereWithAggregatesInput[]
   NOT?: Prisma.rap_phimScalarWhereWithAggregatesInput | Prisma.rap_phimScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"rap_phim"> | number
   ma_rap?: Prisma.IntWithAggregatesFilter<"rap_phim"> | number
   ten_rap?: Prisma.StringWithAggregatesFilter<"rap_phim"> | string
   ma_cum_rap?: Prisma.IntWithAggregatesFilter<"rap_phim"> | number
 }
 
 export type rap_phimCreateInput = {
+  ma_rap: number
   ten_rap: string
   ghe?: Prisma.gheCreateNestedManyWithoutRap_phimInput
   lich_chieu?: Prisma.lich_chieuCreateNestedManyWithoutRap_phimInput
@@ -259,7 +276,8 @@ export type rap_phimCreateInput = {
 }
 
 export type rap_phimUncheckedCreateInput = {
-  ma_rap?: number
+  id?: number
+  ma_rap: number
   ten_rap: string
   ma_cum_rap: number
   ghe?: Prisma.gheUncheckedCreateNestedManyWithoutRap_phimInput
@@ -267,6 +285,7 @@ export type rap_phimUncheckedCreateInput = {
 }
 
 export type rap_phimUpdateInput = {
+  ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_rap?: Prisma.StringFieldUpdateOperationsInput | string
   ghe?: Prisma.gheUpdateManyWithoutRap_phimNestedInput
   lich_chieu?: Prisma.lich_chieuUpdateManyWithoutRap_phimNestedInput
@@ -274,6 +293,7 @@ export type rap_phimUpdateInput = {
 }
 
 export type rap_phimUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_rap?: Prisma.StringFieldUpdateOperationsInput | string
   ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
@@ -282,16 +302,19 @@ export type rap_phimUncheckedUpdateInput = {
 }
 
 export type rap_phimCreateManyInput = {
-  ma_rap?: number
+  id?: number
+  ma_rap: number
   ten_rap: string
   ma_cum_rap: number
 }
 
 export type rap_phimUpdateManyMutationInput = {
+  ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_rap?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type rap_phimUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_rap?: Prisma.StringFieldUpdateOperationsInput | string
   ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
@@ -319,29 +342,34 @@ export type rap_phimOrderByRelevanceInput = {
 }
 
 export type rap_phimCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ten_rap?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
 }
 
 export type rap_phimAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
 }
 
 export type rap_phimMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ten_rap?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
 }
 
 export type rap_phimMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ten_rap?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
 }
 
 export type rap_phimSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ma_cum_rap?: Prisma.SortOrder
 }
@@ -417,13 +445,15 @@ export type rap_phimUpdateOneRequiredWithoutLich_chieuNestedInput = {
 }
 
 export type rap_phimCreateWithoutCum_rapInput = {
+  ma_rap: number
   ten_rap: string
   ghe?: Prisma.gheCreateNestedManyWithoutRap_phimInput
   lich_chieu?: Prisma.lich_chieuCreateNestedManyWithoutRap_phimInput
 }
 
 export type rap_phimUncheckedCreateWithoutCum_rapInput = {
-  ma_rap?: number
+  id?: number
+  ma_rap: number
   ten_rap: string
   ghe?: Prisma.gheUncheckedCreateNestedManyWithoutRap_phimInput
   lich_chieu?: Prisma.lich_chieuUncheckedCreateNestedManyWithoutRap_phimInput
@@ -459,19 +489,22 @@ export type rap_phimScalarWhereInput = {
   AND?: Prisma.rap_phimScalarWhereInput | Prisma.rap_phimScalarWhereInput[]
   OR?: Prisma.rap_phimScalarWhereInput[]
   NOT?: Prisma.rap_phimScalarWhereInput | Prisma.rap_phimScalarWhereInput[]
+  id?: Prisma.IntFilter<"rap_phim"> | number
   ma_rap?: Prisma.IntFilter<"rap_phim"> | number
   ten_rap?: Prisma.StringFilter<"rap_phim"> | string
   ma_cum_rap?: Prisma.IntFilter<"rap_phim"> | number
 }
 
 export type rap_phimCreateWithoutGheInput = {
+  ma_rap: number
   ten_rap: string
   lich_chieu?: Prisma.lich_chieuCreateNestedManyWithoutRap_phimInput
   cum_rap: Prisma.cum_rapCreateNestedOneWithoutRap_phimInput
 }
 
 export type rap_phimUncheckedCreateWithoutGheInput = {
-  ma_rap?: number
+  id?: number
+  ma_rap: number
   ten_rap: string
   ma_cum_rap: number
   lich_chieu?: Prisma.lich_chieuUncheckedCreateNestedManyWithoutRap_phimInput
@@ -494,12 +527,14 @@ export type rap_phimUpdateToOneWithWhereWithoutGheInput = {
 }
 
 export type rap_phimUpdateWithoutGheInput = {
+  ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_rap?: Prisma.StringFieldUpdateOperationsInput | string
   lich_chieu?: Prisma.lich_chieuUpdateManyWithoutRap_phimNestedInput
   cum_rap?: Prisma.cum_rapUpdateOneRequiredWithoutRap_phimNestedInput
 }
 
 export type rap_phimUncheckedUpdateWithoutGheInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_rap?: Prisma.StringFieldUpdateOperationsInput | string
   ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
@@ -507,13 +542,15 @@ export type rap_phimUncheckedUpdateWithoutGheInput = {
 }
 
 export type rap_phimCreateWithoutLich_chieuInput = {
+  ma_rap: number
   ten_rap: string
   ghe?: Prisma.gheCreateNestedManyWithoutRap_phimInput
   cum_rap: Prisma.cum_rapCreateNestedOneWithoutRap_phimInput
 }
 
 export type rap_phimUncheckedCreateWithoutLich_chieuInput = {
-  ma_rap?: number
+  id?: number
+  ma_rap: number
   ten_rap: string
   ma_cum_rap: number
   ghe?: Prisma.gheUncheckedCreateNestedManyWithoutRap_phimInput
@@ -536,12 +573,14 @@ export type rap_phimUpdateToOneWithWhereWithoutLich_chieuInput = {
 }
 
 export type rap_phimUpdateWithoutLich_chieuInput = {
+  ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_rap?: Prisma.StringFieldUpdateOperationsInput | string
   ghe?: Prisma.gheUpdateManyWithoutRap_phimNestedInput
   cum_rap?: Prisma.cum_rapUpdateOneRequiredWithoutRap_phimNestedInput
 }
 
 export type rap_phimUncheckedUpdateWithoutLich_chieuInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_rap?: Prisma.StringFieldUpdateOperationsInput | string
   ma_cum_rap?: Prisma.IntFieldUpdateOperationsInput | number
@@ -549,17 +588,20 @@ export type rap_phimUncheckedUpdateWithoutLich_chieuInput = {
 }
 
 export type rap_phimCreateManyCum_rapInput = {
-  ma_rap?: number
+  id?: number
+  ma_rap: number
   ten_rap: string
 }
 
 export type rap_phimUpdateWithoutCum_rapInput = {
+  ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_rap?: Prisma.StringFieldUpdateOperationsInput | string
   ghe?: Prisma.gheUpdateManyWithoutRap_phimNestedInput
   lich_chieu?: Prisma.lich_chieuUpdateManyWithoutRap_phimNestedInput
 }
 
 export type rap_phimUncheckedUpdateWithoutCum_rapInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_rap?: Prisma.StringFieldUpdateOperationsInput | string
   ghe?: Prisma.gheUncheckedUpdateManyWithoutRap_phimNestedInput
@@ -567,6 +609,7 @@ export type rap_phimUncheckedUpdateWithoutCum_rapInput = {
 }
 
 export type rap_phimUncheckedUpdateManyWithoutCum_rapInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_rap?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -612,6 +655,7 @@ export type Rap_phimCountOutputTypeCountLich_chieuArgs<ExtArgs extends runtime.T
 
 
 export type rap_phimSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   ma_rap?: boolean
   ten_rap?: boolean
   ma_cum_rap?: boolean
@@ -624,12 +668,13 @@ export type rap_phimSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 
 export type rap_phimSelectScalar = {
+  id?: boolean
   ma_rap?: boolean
   ten_rap?: boolean
   ma_cum_rap?: boolean
 }
 
-export type rap_phimOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ma_rap" | "ten_rap" | "ma_cum_rap", ExtArgs["result"]["rap_phim"]>
+export type rap_phimOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ma_rap" | "ten_rap" | "ma_cum_rap", ExtArgs["result"]["rap_phim"]>
 export type rap_phimInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   ghe?: boolean | Prisma.rap_phim$gheArgs<ExtArgs>
   lich_chieu?: boolean | Prisma.rap_phim$lich_chieuArgs<ExtArgs>
@@ -645,6 +690,7 @@ export type $rap_phimPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     cum_rap: Prisma.$cum_rapPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     ma_rap: number
     ten_rap: string
     ma_cum_rap: number
@@ -731,8 +777,8 @@ export interface rap_phimDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * // Get first 10 Rap_phims
    * const rap_phims = await prisma.rap_phim.findMany({ take: 10 })
    * 
-   * // Only select the `ma_rap`
-   * const rap_phimWithMa_rapOnly = await prisma.rap_phim.findMany({ select: { ma_rap: true } })
+   * // Only select the `id`
+   * const rap_phimWithIdOnly = await prisma.rap_phim.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends rap_phimFindManyArgs>(args?: Prisma.SelectSubset<T, rap_phimFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$rap_phimPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1020,6 +1066,7 @@ export interface Prisma__rap_phimClient<T, Null = never, ExtArgs extends runtime
  * Fields of the rap_phim model
  */
 export interface rap_phimFieldRefs {
+  readonly id: Prisma.FieldRef<"rap_phim", 'Int'>
   readonly ma_rap: Prisma.FieldRef<"rap_phim", 'Int'>
   readonly ten_rap: Prisma.FieldRef<"rap_phim", 'String'>
   readonly ma_cum_rap: Prisma.FieldRef<"rap_phim", 'Int'>

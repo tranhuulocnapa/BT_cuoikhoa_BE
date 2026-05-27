@@ -19,7 +19,7 @@ export class UsersService {
 
   async create(dto: CreateUserDto) {
     const existingUser = await this.prisma.nguoi_dung.findFirst({
-      where: { OR: [{ email: dto.email }] },
+      where: { OR: [{ email: dto.email }, { tai_khoan: dto.taiKhoan }] },
     });
 
     if (existingUser) {
@@ -30,6 +30,8 @@ export class UsersService {
 
     const user = await this.prisma.nguoi_dung.create({
       data: {
+        tai_khoan: dto.taiKhoan,
+        ma_nhom: dto.maNhom || 'GP01',
         ho_ten: dto.hoTen,
         email: dto.email,
         mat_khau: hashedPassword,
@@ -76,8 +78,8 @@ export class UsersService {
     return this.findAll(query);
   }
 
-  async findOne(taiKhoan: number) {
-    const user = await this.prisma.nguoi_dung.findUnique({
+  async findOne(taiKhoan: string) {
+    const user = await this.prisma.nguoi_dung.findFirst({
       where: { tai_khoan: taiKhoan },
     });
 
@@ -101,12 +103,10 @@ export class UsersService {
   }
 
   async findByIdentifier(identifier: string) {
-    const parsedId = parseInt(identifier, 10);
-    const conditions: any[] = [{ email: identifier }];
-
-    if (!Number.isNaN(parsedId)) {
-      conditions.push({ tai_khoan: parsedId });
-    }
+    const conditions: any[] = [
+      { email: identifier },
+      { tai_khoan: identifier },
+    ];
 
     const user = await this.prisma.nguoi_dung.findFirst({
       where: { OR: conditions },
@@ -119,8 +119,8 @@ export class UsersService {
     return this.formatUser(user);
   }
 
-  async findByTaiKhoan(taiKhoan: number) {
-    const user = await this.prisma.nguoi_dung.findUnique({
+  async findByTaiKhoan(taiKhoan: string) {
+    const user = await this.prisma.nguoi_dung.findFirst({
       where: { tai_khoan: taiKhoan },
     });
 
@@ -131,7 +131,7 @@ export class UsersService {
     return this.formatUser(user);
   }
 
-  async update(taiKhoan: number, dto: UpdateUserDto) {
+  async update(taiKhoan: string, dto: UpdateUserDto) {
     const user = await this.prisma.nguoi_dung.findUnique({
       where: { tai_khoan: taiKhoan },
     });
@@ -155,7 +155,7 @@ export class UsersService {
     return this.formatUser(updatedUser);
   }
 
-  async delete(taiKhoan: number) {
+  async delete(taiKhoan: string) {
     const user = await this.prisma.nguoi_dung.findUnique({
       where: { tai_khoan: taiKhoan },
     });
@@ -173,11 +173,11 @@ export class UsersService {
 
   private formatUser(user: any) {
     return {
-      taiKhoan: user.tai_khoan?.toString() || '',
+      taiKhoan: user.tai_khoan || '',
       hoTen: user.ho_ten,
       email: user.email,
       soDt: user.so_dt,
-      maNhom: null,
+      maNhom: user.ma_nhom || 'GP01',
       maLoaiNguoiDung: user.loai_nguoi_dung || null,
     };
   }

@@ -17,21 +17,22 @@ export class AuthService {
   ) {}
 
   async register(dto: RegisterDto) {
-    // Kiểm tra email đã tồn tại
-    const existingUser = await this.prisma.nguoi_dung.findUnique({
-      where: { email: dto.email },
+    const existingUser = await this.prisma.nguoi_dung.findFirst({
+      where: {
+        OR: [{ email: dto.email }, { tai_khoan: dto.taiKhoan }],
+      },
     });
 
     if (existingUser) {
-      throw new BadRequestException('Email đã được đăng ký');
+      throw new BadRequestException('Email hoac tai khoan da duoc dang ky');
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(dto.matKhau, 10);
 
-    // Tạo user mới (sử dụng các cột hiện có trong database)
     const newUser = await this.prisma.nguoi_dung.create({
       data: {
+        tai_khoan: dto.taiKhoan,
+        ma_nhom: dto.maNhom || 'GP01',
         ho_ten: dto.hoTen,
         email: dto.email,
         so_dt: dto.soDt || null,
@@ -40,56 +41,49 @@ export class AuthService {
       },
     });
 
-    // Tạo JWT token
     const accessToken = this.generateAccessToken(newUser);
 
     return {
       accessToken,
       user: {
-        taiKhoan: newUser.tai_khoan?.toString() || '',
+        taiKhoan: newUser.tai_khoan,
         email: newUser.email,
         hoTen: newUser.ho_ten,
         loaiNguoiDung: newUser.loai_nguoi_dung,
+        maNhom: newUser.ma_nhom || 'GP01',
       },
     };
   }
 
   async login(dto: LoginDto): Promise<LoginResponseDto> {
-    // Tìm user theo email hoặc id
     const identifier = dto.taiKhoan;
-    const conditions: any[] = [{ email: identifier }];
-
-    const parsedId = parseInt(identifier, 10);
-    if (!Number.isNaN(parsedId)) {
-      conditions.push({ tai_khoan: parsedId });
-    }
 
     const user = await this.prisma.nguoi_dung.findFirst({
-      where: { OR: conditions },
+      where: {
+        OR: [{ email: identifier }, { tai_khoan: identifier }],
+      },
     });
 
     if (!user) {
       throw new UnauthorizedException(
-        'Tài khoản hoặc mật khẩu không chính xác',
+        'Tai khoan hoac mat khau khong chinh xac',
       );
     }
 
-    // Kiểm tra password
     const isPasswordValid = await bcrypt.compare(dto.matKhau, user.mat_khau);
 
     if (!isPasswordValid) {
       throw new UnauthorizedException(
-        'Tài khoản hoặc mật khẩu không chính xác',
+        'Tai khoan hoac mat khau khong chinh xac',
       );
     }
 
-    // Tạo JWT token
     const accessToken = this.generateAccessToken(user);
 
     return {
       accessToken,
       user: {
-        taiKhoan: user.tai_khoan?.toString() || '',
+        taiKhoan: user.tai_khoan,
         email: user.email,
         hoTen: user.ho_ten,
         loaiNguoiDung: user.loai_nguoi_dung,
@@ -99,7 +93,7 @@ export class AuthService {
 
   private generateAccessToken(user: any) {
     const payload = {
-      taiKhoan: user.tai_khoan?.toString() || '',
+      taiKhoan: user.tai_khoan,
       email: user.email,
       hoTen: user.ho_ten,
       loaiNguoiDung: user.loai_nguoi_dung,

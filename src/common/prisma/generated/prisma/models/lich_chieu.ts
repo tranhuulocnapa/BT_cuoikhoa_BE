@@ -27,6 +27,7 @@ export type AggregateLich_chieu = {
 }
 
 export type Lich_chieuAvgAggregateOutputType = {
+  id: number | null
   ma_lich_chieu: number | null
   ma_rap: number | null
   ma_phim: number | null
@@ -34,6 +35,7 @@ export type Lich_chieuAvgAggregateOutputType = {
 }
 
 export type Lich_chieuSumAggregateOutputType = {
+  id: number | null
   ma_lich_chieu: number | null
   ma_rap: number | null
   ma_phim: number | null
@@ -41,6 +43,7 @@ export type Lich_chieuSumAggregateOutputType = {
 }
 
 export type Lich_chieuMinAggregateOutputType = {
+  id: number | null
   ma_lich_chieu: number | null
   ma_rap: number | null
   ma_phim: number | null
@@ -49,6 +52,7 @@ export type Lich_chieuMinAggregateOutputType = {
 }
 
 export type Lich_chieuMaxAggregateOutputType = {
+  id: number | null
   ma_lich_chieu: number | null
   ma_rap: number | null
   ma_phim: number | null
@@ -57,6 +61,7 @@ export type Lich_chieuMaxAggregateOutputType = {
 }
 
 export type Lich_chieuCountAggregateOutputType = {
+  id: number
   ma_lich_chieu: number
   ma_rap: number
   ma_phim: number
@@ -67,6 +72,7 @@ export type Lich_chieuCountAggregateOutputType = {
 
 
 export type Lich_chieuAvgAggregateInputType = {
+  id?: true
   ma_lich_chieu?: true
   ma_rap?: true
   ma_phim?: true
@@ -74,6 +80,7 @@ export type Lich_chieuAvgAggregateInputType = {
 }
 
 export type Lich_chieuSumAggregateInputType = {
+  id?: true
   ma_lich_chieu?: true
   ma_rap?: true
   ma_phim?: true
@@ -81,6 +88,7 @@ export type Lich_chieuSumAggregateInputType = {
 }
 
 export type Lich_chieuMinAggregateInputType = {
+  id?: true
   ma_lich_chieu?: true
   ma_rap?: true
   ma_phim?: true
@@ -89,6 +97,7 @@ export type Lich_chieuMinAggregateInputType = {
 }
 
 export type Lich_chieuMaxAggregateInputType = {
+  id?: true
   ma_lich_chieu?: true
   ma_rap?: true
   ma_phim?: true
@@ -97,6 +106,7 @@ export type Lich_chieuMaxAggregateInputType = {
 }
 
 export type Lich_chieuCountAggregateInputType = {
+  id?: true
   ma_lich_chieu?: true
   ma_rap?: true
   ma_phim?: true
@@ -192,6 +202,7 @@ export type lich_chieuGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 export type Lich_chieuGroupByOutputType = {
+  id: number
   ma_lich_chieu: number
   ma_rap: number
   ma_phim: number
@@ -223,6 +234,7 @@ export type lich_chieuWhereInput = {
   AND?: Prisma.lich_chieuWhereInput | Prisma.lich_chieuWhereInput[]
   OR?: Prisma.lich_chieuWhereInput[]
   NOT?: Prisma.lich_chieuWhereInput | Prisma.lich_chieuWhereInput[]
+  id?: Prisma.IntFilter<"lich_chieu"> | number
   ma_lich_chieu?: Prisma.IntFilter<"lich_chieu"> | number
   ma_rap?: Prisma.IntFilter<"lich_chieu"> | number
   ma_phim?: Prisma.IntFilter<"lich_chieu"> | number
@@ -234,6 +246,7 @@ export type lich_chieuWhereInput = {
 }
 
 export type lich_chieuOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
@@ -245,6 +258,7 @@ export type lich_chieuOrderByWithRelationInput = {
 }
 
 export type lich_chieuWhereUniqueInput = Prisma.AtLeast<{
+  id?: number
   ma_lich_chieu?: number
   AND?: Prisma.lich_chieuWhereInput | Prisma.lich_chieuWhereInput[]
   OR?: Prisma.lich_chieuWhereInput[]
@@ -256,9 +270,10 @@ export type lich_chieuWhereUniqueInput = Prisma.AtLeast<{
   dat_ve?: Prisma.Dat_veListRelationFilter
   phim?: Prisma.XOR<Prisma.PhimScalarRelationFilter, Prisma.phimWhereInput>
   rap_phim?: Prisma.XOR<Prisma.Rap_phimScalarRelationFilter, Prisma.rap_phimWhereInput>
-}, "ma_lich_chieu">
+}, "id" | "ma_lich_chieu">
 
 export type lich_chieuOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
@@ -275,6 +290,7 @@ export type lich_chieuScalarWhereWithAggregatesInput = {
   AND?: Prisma.lich_chieuScalarWhereWithAggregatesInput | Prisma.lich_chieuScalarWhereWithAggregatesInput[]
   OR?: Prisma.lich_chieuScalarWhereWithAggregatesInput[]
   NOT?: Prisma.lich_chieuScalarWhereWithAggregatesInput | Prisma.lich_chieuScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"lich_chieu"> | number
   ma_lich_chieu?: Prisma.IntWithAggregatesFilter<"lich_chieu"> | number
   ma_rap?: Prisma.IntWithAggregatesFilter<"lich_chieu"> | number
   ma_phim?: Prisma.IntWithAggregatesFilter<"lich_chieu"> | number
@@ -283,6 +299,7 @@ export type lich_chieuScalarWhereWithAggregatesInput = {
 }
 
 export type lich_chieuCreateInput = {
+  ma_lich_chieu: number
   ngay_gio_chieu: Date | string
   gia_ve: number
   dat_ve?: Prisma.dat_veCreateNestedManyWithoutLich_chieuInput
@@ -291,7 +308,8 @@ export type lich_chieuCreateInput = {
 }
 
 export type lich_chieuUncheckedCreateInput = {
-  ma_lich_chieu?: number
+  id?: number
+  ma_lich_chieu: number
   ma_rap: number
   ma_phim: number
   ngay_gio_chieu: Date | string
@@ -300,6 +318,7 @@ export type lich_chieuUncheckedCreateInput = {
 }
 
 export type lich_chieuUpdateInput = {
+  ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ngay_gio_chieu?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   gia_ve?: Prisma.IntFieldUpdateOperationsInput | number
   dat_ve?: Prisma.dat_veUpdateManyWithoutLich_chieuNestedInput
@@ -308,6 +327,7 @@ export type lich_chieuUpdateInput = {
 }
 
 export type lich_chieuUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
@@ -317,7 +337,8 @@ export type lich_chieuUncheckedUpdateInput = {
 }
 
 export type lich_chieuCreateManyInput = {
-  ma_lich_chieu?: number
+  id?: number
+  ma_lich_chieu: number
   ma_rap: number
   ma_phim: number
   ngay_gio_chieu: Date | string
@@ -325,11 +346,13 @@ export type lich_chieuCreateManyInput = {
 }
 
 export type lich_chieuUpdateManyMutationInput = {
+  ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ngay_gio_chieu?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   gia_ve?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type lich_chieuUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
@@ -343,6 +366,7 @@ export type Lich_chieuScalarRelationFilter = {
 }
 
 export type lich_chieuCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
@@ -351,6 +375,7 @@ export type lich_chieuCountOrderByAggregateInput = {
 }
 
 export type lich_chieuAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
@@ -358,6 +383,7 @@ export type lich_chieuAvgOrderByAggregateInput = {
 }
 
 export type lich_chieuMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
@@ -366,6 +392,7 @@ export type lich_chieuMaxOrderByAggregateInput = {
 }
 
 export type lich_chieuMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
@@ -374,6 +401,7 @@ export type lich_chieuMinOrderByAggregateInput = {
 }
 
 export type lich_chieuSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_rap?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
@@ -493,6 +521,7 @@ export type lich_chieuUncheckedUpdateManyWithoutRap_phimNestedInput = {
 }
 
 export type lich_chieuCreateWithoutDat_veInput = {
+  ma_lich_chieu: number
   ngay_gio_chieu: Date | string
   gia_ve: number
   phim: Prisma.phimCreateNestedOneWithoutLich_chieuInput
@@ -500,7 +529,8 @@ export type lich_chieuCreateWithoutDat_veInput = {
 }
 
 export type lich_chieuUncheckedCreateWithoutDat_veInput = {
-  ma_lich_chieu?: number
+  id?: number
+  ma_lich_chieu: number
   ma_rap: number
   ma_phim: number
   ngay_gio_chieu: Date | string
@@ -524,6 +554,7 @@ export type lich_chieuUpdateToOneWithWhereWithoutDat_veInput = {
 }
 
 export type lich_chieuUpdateWithoutDat_veInput = {
+  ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ngay_gio_chieu?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   gia_ve?: Prisma.IntFieldUpdateOperationsInput | number
   phim?: Prisma.phimUpdateOneRequiredWithoutLich_chieuNestedInput
@@ -531,6 +562,7 @@ export type lich_chieuUpdateWithoutDat_veInput = {
 }
 
 export type lich_chieuUncheckedUpdateWithoutDat_veInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
@@ -539,6 +571,7 @@ export type lich_chieuUncheckedUpdateWithoutDat_veInput = {
 }
 
 export type lich_chieuCreateWithoutPhimInput = {
+  ma_lich_chieu: number
   ngay_gio_chieu: Date | string
   gia_ve: number
   dat_ve?: Prisma.dat_veCreateNestedManyWithoutLich_chieuInput
@@ -546,7 +579,8 @@ export type lich_chieuCreateWithoutPhimInput = {
 }
 
 export type lich_chieuUncheckedCreateWithoutPhimInput = {
-  ma_lich_chieu?: number
+  id?: number
+  ma_lich_chieu: number
   ma_rap: number
   ngay_gio_chieu: Date | string
   gia_ve: number
@@ -583,6 +617,7 @@ export type lich_chieuScalarWhereInput = {
   AND?: Prisma.lich_chieuScalarWhereInput | Prisma.lich_chieuScalarWhereInput[]
   OR?: Prisma.lich_chieuScalarWhereInput[]
   NOT?: Prisma.lich_chieuScalarWhereInput | Prisma.lich_chieuScalarWhereInput[]
+  id?: Prisma.IntFilter<"lich_chieu"> | number
   ma_lich_chieu?: Prisma.IntFilter<"lich_chieu"> | number
   ma_rap?: Prisma.IntFilter<"lich_chieu"> | number
   ma_phim?: Prisma.IntFilter<"lich_chieu"> | number
@@ -591,6 +626,7 @@ export type lich_chieuScalarWhereInput = {
 }
 
 export type lich_chieuCreateWithoutRap_phimInput = {
+  ma_lich_chieu: number
   ngay_gio_chieu: Date | string
   gia_ve: number
   dat_ve?: Prisma.dat_veCreateNestedManyWithoutLich_chieuInput
@@ -598,7 +634,8 @@ export type lich_chieuCreateWithoutRap_phimInput = {
 }
 
 export type lich_chieuUncheckedCreateWithoutRap_phimInput = {
-  ma_lich_chieu?: number
+  id?: number
+  ma_lich_chieu: number
   ma_phim: number
   ngay_gio_chieu: Date | string
   gia_ve: number
@@ -632,13 +669,15 @@ export type lich_chieuUpdateManyWithWhereWithoutRap_phimInput = {
 }
 
 export type lich_chieuCreateManyPhimInput = {
-  ma_lich_chieu?: number
+  id?: number
+  ma_lich_chieu: number
   ma_rap: number
   ngay_gio_chieu: Date | string
   gia_ve: number
 }
 
 export type lich_chieuUpdateWithoutPhimInput = {
+  ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ngay_gio_chieu?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   gia_ve?: Prisma.IntFieldUpdateOperationsInput | number
   dat_ve?: Prisma.dat_veUpdateManyWithoutLich_chieuNestedInput
@@ -646,6 +685,7 @@ export type lich_chieuUpdateWithoutPhimInput = {
 }
 
 export type lich_chieuUncheckedUpdateWithoutPhimInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ngay_gio_chieu?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -654,6 +694,7 @@ export type lich_chieuUncheckedUpdateWithoutPhimInput = {
 }
 
 export type lich_chieuUncheckedUpdateManyWithoutPhimInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ma_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ngay_gio_chieu?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -661,13 +702,15 @@ export type lich_chieuUncheckedUpdateManyWithoutPhimInput = {
 }
 
 export type lich_chieuCreateManyRap_phimInput = {
-  ma_lich_chieu?: number
+  id?: number
+  ma_lich_chieu: number
   ma_phim: number
   ngay_gio_chieu: Date | string
   gia_ve: number
 }
 
 export type lich_chieuUpdateWithoutRap_phimInput = {
+  ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ngay_gio_chieu?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   gia_ve?: Prisma.IntFieldUpdateOperationsInput | number
   dat_ve?: Prisma.dat_veUpdateManyWithoutLich_chieuNestedInput
@@ -675,6 +718,7 @@ export type lich_chieuUpdateWithoutRap_phimInput = {
 }
 
 export type lich_chieuUncheckedUpdateWithoutRap_phimInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   ngay_gio_chieu?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -683,6 +727,7 @@ export type lich_chieuUncheckedUpdateWithoutRap_phimInput = {
 }
 
 export type lich_chieuUncheckedUpdateManyWithoutRap_phimInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   ngay_gio_chieu?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -721,6 +766,7 @@ export type Lich_chieuCountOutputTypeCountDat_veArgs<ExtArgs extends runtime.Typ
 
 
 export type lich_chieuSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   ma_lich_chieu?: boolean
   ma_rap?: boolean
   ma_phim?: boolean
@@ -735,6 +781,7 @@ export type lich_chieuSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
 
 
 export type lich_chieuSelectScalar = {
+  id?: boolean
   ma_lich_chieu?: boolean
   ma_rap?: boolean
   ma_phim?: boolean
@@ -742,7 +789,7 @@ export type lich_chieuSelectScalar = {
   gia_ve?: boolean
 }
 
-export type lich_chieuOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ma_lich_chieu" | "ma_rap" | "ma_phim" | "ngay_gio_chieu" | "gia_ve", ExtArgs["result"]["lich_chieu"]>
+export type lich_chieuOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ma_lich_chieu" | "ma_rap" | "ma_phim" | "ngay_gio_chieu" | "gia_ve", ExtArgs["result"]["lich_chieu"]>
 export type lich_chieuInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   dat_ve?: boolean | Prisma.lich_chieu$dat_veArgs<ExtArgs>
   phim?: boolean | Prisma.phimDefaultArgs<ExtArgs>
@@ -758,6 +805,7 @@ export type $lich_chieuPayload<ExtArgs extends runtime.Types.Extensions.Internal
     rap_phim: Prisma.$rap_phimPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     ma_lich_chieu: number
     ma_rap: number
     ma_phim: number
@@ -846,8 +894,8 @@ export interface lich_chieuDelegate<ExtArgs extends runtime.Types.Extensions.Int
    * // Get first 10 Lich_chieus
    * const lich_chieus = await prisma.lich_chieu.findMany({ take: 10 })
    * 
-   * // Only select the `ma_lich_chieu`
-   * const lich_chieuWithMa_lich_chieuOnly = await prisma.lich_chieu.findMany({ select: { ma_lich_chieu: true } })
+   * // Only select the `id`
+   * const lich_chieuWithIdOnly = await prisma.lich_chieu.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends lich_chieuFindManyArgs>(args?: Prisma.SelectSubset<T, lich_chieuFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$lich_chieuPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1135,6 +1183,7 @@ export interface Prisma__lich_chieuClient<T, Null = never, ExtArgs extends runti
  * Fields of the lich_chieu model
  */
 export interface lich_chieuFieldRefs {
+  readonly id: Prisma.FieldRef<"lich_chieu", 'Int'>
   readonly ma_lich_chieu: Prisma.FieldRef<"lich_chieu", 'Int'>
   readonly ma_rap: Prisma.FieldRef<"lich_chieu", 'Int'>
   readonly ma_phim: Prisma.FieldRef<"lich_chieu", 'Int'>

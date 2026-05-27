@@ -37,14 +37,13 @@ export class BookingsController {
       throw new BadRequestException('Thiếu thông tin bắt buộc');
     }
 
-    const taiKhoanNum = parseInt(user.taiKhoan, 10);
-    if (Number.isNaN(taiKhoanNum)) {
+    if (!user.taiKhoan) {
       throw new BadRequestException(
         'TaiKhoan hợp lệ không tìm thấy trong token',
       );
     }
 
-    return this.bookingsService.bookSeats(taiKhoanNum, dto);
+    return this.bookingsService.bookSeats(user.taiKhoan, dto);
   }
 
   @Get('LayDanhSachPhongVe')

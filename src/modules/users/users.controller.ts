@@ -37,29 +37,33 @@ export class UsersController {
   @Get('LayDanhSachNguoiDung')
   @ApiOperation({ summary: 'Lấy danh sách người dùng' })
   @ApiResponse({ status: 200, description: 'Danh sách người dùng' })
-  async getAll(@Query() query: GetUsersQueryDto) {
-    return this.usersService.findAll(query);
+  async getAll(@Query() query: any) {
+    const mapped = mapQueryKeys(query);
+    return this.usersService.findAll(mapped);
   }
 
   @Get('LayDanhSachNguoiDungPhanTrang')
   @ApiOperation({ summary: 'Lấy danh sách người dùng phân trang' })
   @ApiResponse({ status: 200, description: 'Danh sách người dùng phân trang' })
-  async getAllPaginated(@Query() query: GetUsersQueryDto) {
-    return this.usersService.findAll(query);
+  async getAllPaginated(@Query() query: any) {
+    const mapped = mapQueryKeys(query);
+    return this.usersService.findAll(mapped);
   }
 
   @Get('TimKiemNguoiDung')
   @ApiOperation({ summary: 'Tìm kiếm người dùng' })
   @ApiResponse({ status: 200, description: 'Kết quả tìm kiếm' })
-  async search(@Query() query: GetUsersQueryDto) {
-    return this.usersService.search(query);
+  async search(@Query() query: any) {
+    const mapped = mapQueryKeys(query);
+    return this.usersService.search(mapped);
   }
 
   @Get('TimKiemNguoiDungPhanTrang')
   @ApiOperation({ summary: 'Tìm kiếm người dùng phân trang' })
   @ApiResponse({ status: 200, description: 'Kết quả tìm kiếm phân trang' })
-  async searchPaginated(@Query() query: GetUsersQueryDto) {
-    return this.usersService.search(query);
+  async searchPaginated(@Query() query: any) {
+    const mapped = mapQueryKeys(query);
+    return this.usersService.search(mapped);
   }
 
   @Post('ThongTinTaiKhoan')
@@ -129,11 +133,10 @@ export class UsersController {
   @ApiOperation({ summary: 'Xóa người dùng' })
   @ApiResponse({ status: 200, description: 'Xóa thành công' })
   async deleteUser(@Query('TaiKhoan') taiKhoan: string) {
-    const taiKhoanNum = parseInt(taiKhoan, 10);
-    if (Number.isNaN(taiKhoanNum)) {
-      throw new BadRequestException('TaiKhoan phải là số nguyên hợp lệ');
+    if (!taiKhoan) {
+      throw new BadRequestException('TaiKhoan la bat buoc');
     }
-    return this.usersService.delete(taiKhoanNum);
+    return this.usersService.delete(taiKhoan);
   }
 
   @Get('LayDanhSachLoaiNguoiDung')
@@ -148,4 +151,14 @@ export class UsersController {
       { ma: 'KhachHang', ten: 'Khách hàng' },
     ];
   }
+}
+
+function mapQueryKeys(query: any) {
+  if (!query) return {};
+  const mapped: any = {};
+  for (const [k, v] of Object.entries(query)) {
+    const lower = k[0].toLowerCase() + k.slice(1);
+    mapped[lower] = v;
+  }
+  return mapped;
 }

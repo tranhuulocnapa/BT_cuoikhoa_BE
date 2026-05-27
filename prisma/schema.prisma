@@ -8,72 +8,80 @@ datasource db {
 }
 
 model banner {
-  ma_banner Int     @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
+  ma_banner Int     @unique(map: "uk_ma_banner")
   ma_phim   Int
   hinh_anh  String? @db.VarChar(500)
-  phim      phim    @relation(fields: [ma_phim], references: [ma_phim], onDelete: Cascade, map: "fk_banner_phim")
+  phim      phim    @relation(fields: [ma_phim], references: [ma_phim], onDelete: Cascade, onUpdate: NoAction, map: "fk_banner_phim")
 
   @@index([ma_phim], map: "fk_banner_phim")
 }
 
 model cum_rap {
-  ma_cum_rap      Int          @id @default(autoincrement())
+  id              Int          @id @default(autoincrement())
+  ma_cum_rap      Int          @unique(map: "uk_ma_cum_rap")
   ten_cum_rap     String       @db.VarChar(255)
   dia_chi         String?      @db.VarChar(500)
   ma_he_thong_rap Int
-  he_thong_rap    he_thong_rap @relation(fields: [ma_he_thong_rap], references: [ma_he_thong_rap], onDelete: Cascade, map: "fk_cumrap_hethongrap")
+  he_thong_rap    he_thong_rap @relation(fields: [ma_he_thong_rap], references: [ma_he_thong_rap], onDelete: Cascade, onUpdate: NoAction, map: "fk_cumrap_hethongrap")
   rap_phim        rap_phim[]
 
   @@index([ma_he_thong_rap], map: "fk_cumrap_hethongrap")
 }
 
 model dat_ve {
-  tai_khoan     Int
+  id            Int        @id @default(autoincrement())
+  tai_khoan     String     @db.VarChar(255)
   ma_lich_chieu Int
   ma_ghe        Int
-  ghe           ghe        @relation(fields: [ma_ghe], references: [ma_ghe], onDelete: Cascade, map: "fk_datve_ghe")
-  lich_chieu    lich_chieu @relation(fields: [ma_lich_chieu], references: [ma_lich_chieu], onDelete: Cascade, map: "fk_datve_lichchieu")
-  nguoi_dung    nguoi_dung @relation(fields: [tai_khoan], references: [tai_khoan], onDelete: Cascade, map: "fk_datve_nguoidung")
+  ghe           ghe        @relation(fields: [ma_ghe], references: [ma_ghe], onDelete: Cascade, onUpdate: NoAction, map: "fk_datve_ghe")
+  lich_chieu    lich_chieu @relation(fields: [ma_lich_chieu], references: [ma_lich_chieu], onDelete: Cascade, onUpdate: NoAction, map: "fk_datve_lichchieu")
+  nguoi_dung    nguoi_dung @relation(fields: [tai_khoan], references: [tai_khoan], onDelete: Cascade, onUpdate: NoAction, map: "fk_datve_nguoidung")
 
-  @@id([tai_khoan, ma_lich_chieu, ma_ghe])
+  @@unique([tai_khoan, ma_lich_chieu, ma_ghe], map: "uc_dat_ve_booking")
   @@index([ma_ghe], map: "fk_datve_ghe")
   @@index([ma_lich_chieu], map: "fk_datve_lichchieu")
 }
 
 model ghe {
-  ma_ghe   Int      @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
+  ma_ghe   Int      @unique(map: "uk_ma_ghe")
   ten_ghe  String   @db.VarChar(50)
   loai_ghe String?  @db.VarChar(50)
   ma_rap   Int
   dat_ve   dat_ve[]
-  rap_phim rap_phim @relation(fields: [ma_rap], references: [ma_rap], onDelete: Cascade, map: "fk_ghe_rapphim")
+  rap_phim rap_phim @relation(fields: [ma_rap], references: [ma_rap], onDelete: Cascade, onUpdate: NoAction, map: "fk_ghe_rapphim")
 
   @@index([ma_rap], map: "fk_ghe_rapphim")
 }
 
 model he_thong_rap {
-  ma_he_thong_rap  Int       @id @default(autoincrement())
+  id               Int       @id @default(autoincrement())
+  ma_he_thong_rap  Int       @unique(map: "uk_ma_he_thong_rap")
   ten_he_thong_rap String    @db.VarChar(255)
   logo             String?   @db.VarChar(500)
   cum_rap          cum_rap[]
 }
 
 model lich_chieu {
-  ma_lich_chieu  Int      @id @default(autoincrement())
+  id             Int      @id @default(autoincrement())
+  ma_lich_chieu  Int      @unique(map: "uk_ma_lich_chieu")
   ma_rap         Int
   ma_phim        Int
   ngay_gio_chieu DateTime @db.DateTime(0)
   gia_ve         Int
   dat_ve         dat_ve[]
-  phim           phim     @relation(fields: [ma_phim], references: [ma_phim], onDelete: Cascade, map: "fk_lichchieu_phim")
-  rap_phim       rap_phim @relation(fields: [ma_rap], references: [ma_rap], onDelete: Cascade, map: "fk_lichchieu_rapphim")
+  phim           phim     @relation(fields: [ma_phim], references: [ma_phim], onDelete: Cascade, onUpdate: NoAction, map: "fk_lichchieu_phim")
+  rap_phim       rap_phim @relation(fields: [ma_rap], references: [ma_rap], onDelete: Cascade, onUpdate: NoAction, map: "fk_lichchieu_rapphim")
 
   @@index([ma_phim], map: "fk_lichchieu_phim")
   @@index([ma_rap], map: "fk_lichchieu_rapphim")
 }
 
 model nguoi_dung {
-  tai_khoan       Int      @id @default(autoincrement())
+  id              Int      @id @default(autoincrement())
+  tai_khoan       String   @unique(map: "uk_tai_khoan") @db.VarChar(255)
+  ma_nhom         String?  @default("GP01") @db.VarChar(50)
   ho_ten          String   @db.VarChar(255)
   email           String   @unique(map: "email") @db.VarChar(255)
   so_dt           String?  @db.VarChar(20)
@@ -83,7 +91,8 @@ model nguoi_dung {
 }
 
 model phim {
-  ma_phim         Int          @id @default(autoincrement())
+  id              Int          @id @default(autoincrement())
+  ma_phim         Int          @unique(map: "uk_ma_phim")
   ten_phim        String       @db.VarChar(255)
   trailer         String?      @db.VarChar(500)
   hinh_anh        String?      @db.VarChar(500)
@@ -98,12 +107,13 @@ model phim {
 }
 
 model rap_phim {
-  ma_rap     Int          @id @default(autoincrement())
+  id         Int          @id @default(autoincrement())
+  ma_rap     Int          @unique(map: "uk_ma_rap")
   ten_rap    String       @db.VarChar(255)
   ma_cum_rap Int
   ghe        ghe[]
   lich_chieu lich_chieu[]
-  cum_rap    cum_rap      @relation(fields: [ma_cum_rap], references: [ma_cum_rap], onDelete: Cascade, map: "fk_rapphim_cumrap")
+  cum_rap    cum_rap      @relation(fields: [ma_cum_rap], references: [ma_cum_rap], onDelete: Cascade, onUpdate: NoAction, map: "fk_rapphim_cumrap")
 
   @@index([ma_cum_rap], map: "fk_rapphim_cumrap")
 }

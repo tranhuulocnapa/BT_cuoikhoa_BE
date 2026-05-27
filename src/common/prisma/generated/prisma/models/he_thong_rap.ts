@@ -27,26 +27,31 @@ export type AggregateHe_thong_rap = {
 }
 
 export type He_thong_rapAvgAggregateOutputType = {
+  id: number | null
   ma_he_thong_rap: number | null
 }
 
 export type He_thong_rapSumAggregateOutputType = {
+  id: number | null
   ma_he_thong_rap: number | null
 }
 
 export type He_thong_rapMinAggregateOutputType = {
+  id: number | null
   ma_he_thong_rap: number | null
   ten_he_thong_rap: string | null
   logo: string | null
 }
 
 export type He_thong_rapMaxAggregateOutputType = {
+  id: number | null
   ma_he_thong_rap: number | null
   ten_he_thong_rap: string | null
   logo: string | null
 }
 
 export type He_thong_rapCountAggregateOutputType = {
+  id: number
   ma_he_thong_rap: number
   ten_he_thong_rap: number
   logo: number
@@ -55,26 +60,31 @@ export type He_thong_rapCountAggregateOutputType = {
 
 
 export type He_thong_rapAvgAggregateInputType = {
+  id?: true
   ma_he_thong_rap?: true
 }
 
 export type He_thong_rapSumAggregateInputType = {
+  id?: true
   ma_he_thong_rap?: true
 }
 
 export type He_thong_rapMinAggregateInputType = {
+  id?: true
   ma_he_thong_rap?: true
   ten_he_thong_rap?: true
   logo?: true
 }
 
 export type He_thong_rapMaxAggregateInputType = {
+  id?: true
   ma_he_thong_rap?: true
   ten_he_thong_rap?: true
   logo?: true
 }
 
 export type He_thong_rapCountAggregateInputType = {
+  id?: true
   ma_he_thong_rap?: true
   ten_he_thong_rap?: true
   logo?: true
@@ -168,6 +178,7 @@ export type he_thong_rapGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 export type He_thong_rapGroupByOutputType = {
+  id: number
   ma_he_thong_rap: number
   ten_he_thong_rap: string
   logo: string | null
@@ -197,6 +208,7 @@ export type he_thong_rapWhereInput = {
   AND?: Prisma.he_thong_rapWhereInput | Prisma.he_thong_rapWhereInput[]
   OR?: Prisma.he_thong_rapWhereInput[]
   NOT?: Prisma.he_thong_rapWhereInput | Prisma.he_thong_rapWhereInput[]
+  id?: Prisma.IntFilter<"he_thong_rap"> | number
   ma_he_thong_rap?: Prisma.IntFilter<"he_thong_rap"> | number
   ten_he_thong_rap?: Prisma.StringFilter<"he_thong_rap"> | string
   logo?: Prisma.StringNullableFilter<"he_thong_rap"> | string | null
@@ -204,6 +216,7 @@ export type he_thong_rapWhereInput = {
 }
 
 export type he_thong_rapOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   ma_he_thong_rap?: Prisma.SortOrder
   ten_he_thong_rap?: Prisma.SortOrder
   logo?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -212,6 +225,7 @@ export type he_thong_rapOrderByWithRelationInput = {
 }
 
 export type he_thong_rapWhereUniqueInput = Prisma.AtLeast<{
+  id?: number
   ma_he_thong_rap?: number
   AND?: Prisma.he_thong_rapWhereInput | Prisma.he_thong_rapWhereInput[]
   OR?: Prisma.he_thong_rapWhereInput[]
@@ -219,9 +233,10 @@ export type he_thong_rapWhereUniqueInput = Prisma.AtLeast<{
   ten_he_thong_rap?: Prisma.StringFilter<"he_thong_rap"> | string
   logo?: Prisma.StringNullableFilter<"he_thong_rap"> | string | null
   cum_rap?: Prisma.Cum_rapListRelationFilter
-}, "ma_he_thong_rap">
+}, "id" | "ma_he_thong_rap">
 
 export type he_thong_rapOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   ma_he_thong_rap?: Prisma.SortOrder
   ten_he_thong_rap?: Prisma.SortOrder
   logo?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -236,31 +251,36 @@ export type he_thong_rapScalarWhereWithAggregatesInput = {
   AND?: Prisma.he_thong_rapScalarWhereWithAggregatesInput | Prisma.he_thong_rapScalarWhereWithAggregatesInput[]
   OR?: Prisma.he_thong_rapScalarWhereWithAggregatesInput[]
   NOT?: Prisma.he_thong_rapScalarWhereWithAggregatesInput | Prisma.he_thong_rapScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"he_thong_rap"> | number
   ma_he_thong_rap?: Prisma.IntWithAggregatesFilter<"he_thong_rap"> | number
   ten_he_thong_rap?: Prisma.StringWithAggregatesFilter<"he_thong_rap"> | string
   logo?: Prisma.StringNullableWithAggregatesFilter<"he_thong_rap"> | string | null
 }
 
 export type he_thong_rapCreateInput = {
+  ma_he_thong_rap: number
   ten_he_thong_rap: string
   logo?: string | null
   cum_rap?: Prisma.cum_rapCreateNestedManyWithoutHe_thong_rapInput
 }
 
 export type he_thong_rapUncheckedCreateInput = {
-  ma_he_thong_rap?: number
+  id?: number
+  ma_he_thong_rap: number
   ten_he_thong_rap: string
   logo?: string | null
   cum_rap?: Prisma.cum_rapUncheckedCreateNestedManyWithoutHe_thong_rapInput
 }
 
 export type he_thong_rapUpdateInput = {
+  ma_he_thong_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_he_thong_rap?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cum_rap?: Prisma.cum_rapUpdateManyWithoutHe_thong_rapNestedInput
 }
 
 export type he_thong_rapUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_he_thong_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_he_thong_rap?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -268,17 +288,20 @@ export type he_thong_rapUncheckedUpdateInput = {
 }
 
 export type he_thong_rapCreateManyInput = {
-  ma_he_thong_rap?: number
+  id?: number
+  ma_he_thong_rap: number
   ten_he_thong_rap: string
   logo?: string | null
 }
 
 export type he_thong_rapUpdateManyMutationInput = {
+  ma_he_thong_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_he_thong_rap?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type he_thong_rapUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_he_thong_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_he_thong_rap?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -296,28 +319,33 @@ export type he_thong_rapOrderByRelevanceInput = {
 }
 
 export type he_thong_rapCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_he_thong_rap?: Prisma.SortOrder
   ten_he_thong_rap?: Prisma.SortOrder
   logo?: Prisma.SortOrder
 }
 
 export type he_thong_rapAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_he_thong_rap?: Prisma.SortOrder
 }
 
 export type he_thong_rapMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_he_thong_rap?: Prisma.SortOrder
   ten_he_thong_rap?: Prisma.SortOrder
   logo?: Prisma.SortOrder
 }
 
 export type he_thong_rapMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_he_thong_rap?: Prisma.SortOrder
   ten_he_thong_rap?: Prisma.SortOrder
   logo?: Prisma.SortOrder
 }
 
 export type he_thong_rapSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_he_thong_rap?: Prisma.SortOrder
 }
 
@@ -336,12 +364,14 @@ export type he_thong_rapUpdateOneRequiredWithoutCum_rapNestedInput = {
 }
 
 export type he_thong_rapCreateWithoutCum_rapInput = {
+  ma_he_thong_rap: number
   ten_he_thong_rap: string
   logo?: string | null
 }
 
 export type he_thong_rapUncheckedCreateWithoutCum_rapInput = {
-  ma_he_thong_rap?: number
+  id?: number
+  ma_he_thong_rap: number
   ten_he_thong_rap: string
   logo?: string | null
 }
@@ -363,11 +393,13 @@ export type he_thong_rapUpdateToOneWithWhereWithoutCum_rapInput = {
 }
 
 export type he_thong_rapUpdateWithoutCum_rapInput = {
+  ma_he_thong_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_he_thong_rap?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type he_thong_rapUncheckedUpdateWithoutCum_rapInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_he_thong_rap?: Prisma.IntFieldUpdateOperationsInput | number
   ten_he_thong_rap?: Prisma.StringFieldUpdateOperationsInput | string
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -405,6 +437,7 @@ export type He_thong_rapCountOutputTypeCountCum_rapArgs<ExtArgs extends runtime.
 
 
 export type he_thong_rapSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   ma_he_thong_rap?: boolean
   ten_he_thong_rap?: boolean
   logo?: boolean
@@ -415,12 +448,13 @@ export type he_thong_rapSelect<ExtArgs extends runtime.Types.Extensions.Internal
 
 
 export type he_thong_rapSelectScalar = {
+  id?: boolean
   ma_he_thong_rap?: boolean
   ten_he_thong_rap?: boolean
   logo?: boolean
 }
 
-export type he_thong_rapOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ma_he_thong_rap" | "ten_he_thong_rap" | "logo", ExtArgs["result"]["he_thong_rap"]>
+export type he_thong_rapOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ma_he_thong_rap" | "ten_he_thong_rap" | "logo", ExtArgs["result"]["he_thong_rap"]>
 export type he_thong_rapInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cum_rap?: boolean | Prisma.he_thong_rap$cum_rapArgs<ExtArgs>
   _count?: boolean | Prisma.He_thong_rapCountOutputTypeDefaultArgs<ExtArgs>
@@ -432,6 +466,7 @@ export type $he_thong_rapPayload<ExtArgs extends runtime.Types.Extensions.Intern
     cum_rap: Prisma.$cum_rapPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     ma_he_thong_rap: number
     ten_he_thong_rap: string
     logo: string | null
@@ -518,8 +553,8 @@ export interface he_thong_rapDelegate<ExtArgs extends runtime.Types.Extensions.I
    * // Get first 10 He_thong_raps
    * const he_thong_raps = await prisma.he_thong_rap.findMany({ take: 10 })
    * 
-   * // Only select the `ma_he_thong_rap`
-   * const he_thong_rapWithMa_he_thong_rapOnly = await prisma.he_thong_rap.findMany({ select: { ma_he_thong_rap: true } })
+   * // Only select the `id`
+   * const he_thong_rapWithIdOnly = await prisma.he_thong_rap.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends he_thong_rapFindManyArgs>(args?: Prisma.SelectSubset<T, he_thong_rapFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$he_thong_rapPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -805,6 +840,7 @@ export interface Prisma__he_thong_rapClient<T, Null = never, ExtArgs extends run
  * Fields of the he_thong_rap model
  */
 export interface he_thong_rapFieldRefs {
+  readonly id: Prisma.FieldRef<"he_thong_rap", 'Int'>
   readonly ma_he_thong_rap: Prisma.FieldRef<"he_thong_rap", 'Int'>
   readonly ten_he_thong_rap: Prisma.FieldRef<"he_thong_rap", 'String'>
   readonly logo: Prisma.FieldRef<"he_thong_rap", 'String'>

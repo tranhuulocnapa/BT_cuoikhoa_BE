@@ -14,17 +14,9 @@ export function setupSwagger(app: INestApplication): void {
       },
       'access-token',
     )
-    .addApiKey(
-      {
-        type: 'apiKey',
-        name: 'TokenCybersoft',
-        in: 'header',
-      },
-      'cybersoft-token',
-    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  document.security = [{ 'access-token': [], 'cybersoft-token': [] }];
+  document.security = [{ 'access-token': [] }];
   SwaggerModule.setup('api-docs', app, document);
 }

@@ -79,6 +79,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 
 export const BannerScalarFieldEnum = {
+  id: 'id',
   ma_banner: 'ma_banner',
   ma_phim: 'ma_phim',
   hinh_anh: 'hinh_anh'
@@ -88,6 +89,7 @@ export type BannerScalarFieldEnum = (typeof BannerScalarFieldEnum)[keyof typeof 
 
 
 export const Cum_rapScalarFieldEnum = {
+  id: 'id',
   ma_cum_rap: 'ma_cum_rap',
   ten_cum_rap: 'ten_cum_rap',
   dia_chi: 'dia_chi',
@@ -98,6 +100,7 @@ export type Cum_rapScalarFieldEnum = (typeof Cum_rapScalarFieldEnum)[keyof typeo
 
 
 export const Dat_veScalarFieldEnum = {
+  id: 'id',
   tai_khoan: 'tai_khoan',
   ma_lich_chieu: 'ma_lich_chieu',
   ma_ghe: 'ma_ghe'
@@ -107,6 +110,7 @@ export type Dat_veScalarFieldEnum = (typeof Dat_veScalarFieldEnum)[keyof typeof 
 
 
 export const GheScalarFieldEnum = {
+  id: 'id',
   ma_ghe: 'ma_ghe',
   ten_ghe: 'ten_ghe',
   loai_ghe: 'loai_ghe',
@@ -117,6 +121,7 @@ export type GheScalarFieldEnum = (typeof GheScalarFieldEnum)[keyof typeof GheSca
 
 
 export const He_thong_rapScalarFieldEnum = {
+  id: 'id',
   ma_he_thong_rap: 'ma_he_thong_rap',
   ten_he_thong_rap: 'ten_he_thong_rap',
   logo: 'logo'
@@ -126,6 +131,7 @@ export type He_thong_rapScalarFieldEnum = (typeof He_thong_rapScalarFieldEnum)[k
 
 
 export const Lich_chieuScalarFieldEnum = {
+  id: 'id',
   ma_lich_chieu: 'ma_lich_chieu',
   ma_rap: 'ma_rap',
   ma_phim: 'ma_phim',
@@ -137,7 +143,9 @@ export type Lich_chieuScalarFieldEnum = (typeof Lich_chieuScalarFieldEnum)[keyof
 
 
 export const Nguoi_dungScalarFieldEnum = {
+  id: 'id',
   tai_khoan: 'tai_khoan',
+  ma_nhom: 'ma_nhom',
   ho_ten: 'ho_ten',
   email: 'email',
   so_dt: 'so_dt',
@@ -149,6 +157,7 @@ export type Nguoi_dungScalarFieldEnum = (typeof Nguoi_dungScalarFieldEnum)[keyof
 
 
 export const PhimScalarFieldEnum = {
+  id: 'id',
   ma_phim: 'ma_phim',
   ten_phim: 'ten_phim',
   trailer: 'trailer',
@@ -165,6 +174,7 @@ export type PhimScalarFieldEnum = (typeof PhimScalarFieldEnum)[keyof typeof Phim
 
 
 export const Rap_phimScalarFieldEnum = {
+  id: 'id',
   ma_rap: 'ma_rap',
   ten_rap: 'ten_rap',
   ma_cum_rap: 'ma_cum_rap'
@@ -204,6 +214,13 @@ export const cum_rapOrderByRelevanceFieldEnum = {
 export type cum_rapOrderByRelevanceFieldEnum = (typeof cum_rapOrderByRelevanceFieldEnum)[keyof typeof cum_rapOrderByRelevanceFieldEnum]
 
 
+export const dat_veOrderByRelevanceFieldEnum = {
+  tai_khoan: 'tai_khoan'
+} as const
+
+export type dat_veOrderByRelevanceFieldEnum = (typeof dat_veOrderByRelevanceFieldEnum)[keyof typeof dat_veOrderByRelevanceFieldEnum]
+
+
 export const gheOrderByRelevanceFieldEnum = {
   ten_ghe: 'ten_ghe',
   loai_ghe: 'loai_ghe'
@@ -221,6 +238,8 @@ export type he_thong_rapOrderByRelevanceFieldEnum = (typeof he_thong_rapOrderByR
 
 
 export const nguoi_dungOrderByRelevanceFieldEnum = {
+  tai_khoan: 'tai_khoan',
+  ma_nhom: 'ma_nhom',
   ho_ten: 'ho_ten',
   email: 'email',
   so_dt: 'so_dt',

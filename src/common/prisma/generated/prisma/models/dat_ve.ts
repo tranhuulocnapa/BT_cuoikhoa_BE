@@ -27,30 +27,33 @@ export type AggregateDat_ve = {
 }
 
 export type Dat_veAvgAggregateOutputType = {
-  tai_khoan: number | null
+  id: number | null
   ma_lich_chieu: number | null
   ma_ghe: number | null
 }
 
 export type Dat_veSumAggregateOutputType = {
-  tai_khoan: number | null
+  id: number | null
   ma_lich_chieu: number | null
   ma_ghe: number | null
 }
 
 export type Dat_veMinAggregateOutputType = {
-  tai_khoan: number | null
+  id: number | null
+  tai_khoan: string | null
   ma_lich_chieu: number | null
   ma_ghe: number | null
 }
 
 export type Dat_veMaxAggregateOutputType = {
-  tai_khoan: number | null
+  id: number | null
+  tai_khoan: string | null
   ma_lich_chieu: number | null
   ma_ghe: number | null
 }
 
 export type Dat_veCountAggregateOutputType = {
+  id: number
   tai_khoan: number
   ma_lich_chieu: number
   ma_ghe: number
@@ -59,30 +62,33 @@ export type Dat_veCountAggregateOutputType = {
 
 
 export type Dat_veAvgAggregateInputType = {
-  tai_khoan?: true
+  id?: true
   ma_lich_chieu?: true
   ma_ghe?: true
 }
 
 export type Dat_veSumAggregateInputType = {
-  tai_khoan?: true
+  id?: true
   ma_lich_chieu?: true
   ma_ghe?: true
 }
 
 export type Dat_veMinAggregateInputType = {
+  id?: true
   tai_khoan?: true
   ma_lich_chieu?: true
   ma_ghe?: true
 }
 
 export type Dat_veMaxAggregateInputType = {
+  id?: true
   tai_khoan?: true
   ma_lich_chieu?: true
   ma_ghe?: true
 }
 
 export type Dat_veCountAggregateInputType = {
+  id?: true
   tai_khoan?: true
   ma_lich_chieu?: true
   ma_ghe?: true
@@ -176,7 +182,8 @@ export type dat_veGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 export type Dat_veGroupByOutputType = {
-  tai_khoan: number
+  id: number
+  tai_khoan: string
   ma_lich_chieu: number
   ma_ghe: number
   _count: Dat_veCountAggregateOutputType | null
@@ -205,7 +212,8 @@ export type dat_veWhereInput = {
   AND?: Prisma.dat_veWhereInput | Prisma.dat_veWhereInput[]
   OR?: Prisma.dat_veWhereInput[]
   NOT?: Prisma.dat_veWhereInput | Prisma.dat_veWhereInput[]
-  tai_khoan?: Prisma.IntFilter<"dat_ve"> | number
+  id?: Prisma.IntFilter<"dat_ve"> | number
+  tai_khoan?: Prisma.StringFilter<"dat_ve"> | string
   ma_lich_chieu?: Prisma.IntFilter<"dat_ve"> | number
   ma_ghe?: Prisma.IntFilter<"dat_ve"> | number
   ghe?: Prisma.XOR<Prisma.GheScalarRelationFilter, Prisma.gheWhereInput>
@@ -214,28 +222,32 @@ export type dat_veWhereInput = {
 }
 
 export type dat_veOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   tai_khoan?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
   ghe?: Prisma.gheOrderByWithRelationInput
   lich_chieu?: Prisma.lich_chieuOrderByWithRelationInput
   nguoi_dung?: Prisma.nguoi_dungOrderByWithRelationInput
+  _relevance?: Prisma.dat_veOrderByRelevanceInput
 }
 
 export type dat_veWhereUniqueInput = Prisma.AtLeast<{
+  id?: number
   tai_khoan_ma_lich_chieu_ma_ghe?: Prisma.dat_veTai_khoanMa_lich_chieuMa_gheCompoundUniqueInput
   AND?: Prisma.dat_veWhereInput | Prisma.dat_veWhereInput[]
   OR?: Prisma.dat_veWhereInput[]
   NOT?: Prisma.dat_veWhereInput | Prisma.dat_veWhereInput[]
-  tai_khoan?: Prisma.IntFilter<"dat_ve"> | number
+  tai_khoan?: Prisma.StringFilter<"dat_ve"> | string
   ma_lich_chieu?: Prisma.IntFilter<"dat_ve"> | number
   ma_ghe?: Prisma.IntFilter<"dat_ve"> | number
   ghe?: Prisma.XOR<Prisma.GheScalarRelationFilter, Prisma.gheWhereInput>
   lich_chieu?: Prisma.XOR<Prisma.Lich_chieuScalarRelationFilter, Prisma.lich_chieuWhereInput>
   nguoi_dung?: Prisma.XOR<Prisma.Nguoi_dungScalarRelationFilter, Prisma.nguoi_dungWhereInput>
-}, "tai_khoan_ma_lich_chieu_ma_ghe">
+}, "id" | "tai_khoan_ma_lich_chieu_ma_ghe">
 
 export type dat_veOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   tai_khoan?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
@@ -250,7 +262,8 @@ export type dat_veScalarWhereWithAggregatesInput = {
   AND?: Prisma.dat_veScalarWhereWithAggregatesInput | Prisma.dat_veScalarWhereWithAggregatesInput[]
   OR?: Prisma.dat_veScalarWhereWithAggregatesInput[]
   NOT?: Prisma.dat_veScalarWhereWithAggregatesInput | Prisma.dat_veScalarWhereWithAggregatesInput[]
-  tai_khoan?: Prisma.IntWithAggregatesFilter<"dat_ve"> | number
+  id?: Prisma.IntWithAggregatesFilter<"dat_ve"> | number
+  tai_khoan?: Prisma.StringWithAggregatesFilter<"dat_ve"> | string
   ma_lich_chieu?: Prisma.IntWithAggregatesFilter<"dat_ve"> | number
   ma_ghe?: Prisma.IntWithAggregatesFilter<"dat_ve"> | number
 }
@@ -262,7 +275,8 @@ export type dat_veCreateInput = {
 }
 
 export type dat_veUncheckedCreateInput = {
-  tai_khoan: number
+  id?: number
+  tai_khoan: string
   ma_lich_chieu: number
   ma_ghe: number
 }
@@ -274,13 +288,15 @@ export type dat_veUpdateInput = {
 }
 
 export type dat_veUncheckedUpdateInput = {
-  tai_khoan?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  tai_khoan?: Prisma.StringFieldUpdateOperationsInput | string
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type dat_veCreateManyInput = {
-  tai_khoan: number
+  id?: number
+  tai_khoan: string
   ma_lich_chieu: number
   ma_ghe: number
 }
@@ -290,43 +306,53 @@ export type dat_veUpdateManyMutationInput = {
 }
 
 export type dat_veUncheckedUpdateManyInput = {
-  tai_khoan?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  tai_khoan?: Prisma.StringFieldUpdateOperationsInput | string
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
+export type dat_veOrderByRelevanceInput = {
+  fields: Prisma.dat_veOrderByRelevanceFieldEnum | Prisma.dat_veOrderByRelevanceFieldEnum[]
+  sort: Prisma.SortOrder
+  search: string
+}
+
 export type dat_veTai_khoanMa_lich_chieuMa_gheCompoundUniqueInput = {
-  tai_khoan: number
+  tai_khoan: string
   ma_lich_chieu: number
   ma_ghe: number
 }
 
 export type dat_veCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   tai_khoan?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
 }
 
 export type dat_veAvgOrderByAggregateInput = {
-  tai_khoan?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
 }
 
 export type dat_veMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   tai_khoan?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
 }
 
 export type dat_veMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   tai_khoan?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
 }
 
 export type dat_veSumOrderByAggregateInput = {
-  tai_khoan?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   ma_lich_chieu?: Prisma.SortOrder
   ma_ghe?: Prisma.SortOrder
 }
@@ -473,7 +499,8 @@ export type dat_veCreateWithoutGheInput = {
 }
 
 export type dat_veUncheckedCreateWithoutGheInput = {
-  tai_khoan: number
+  id?: number
+  tai_khoan: string
   ma_lich_chieu: number
 }
 
@@ -507,7 +534,8 @@ export type dat_veScalarWhereInput = {
   AND?: Prisma.dat_veScalarWhereInput | Prisma.dat_veScalarWhereInput[]
   OR?: Prisma.dat_veScalarWhereInput[]
   NOT?: Prisma.dat_veScalarWhereInput | Prisma.dat_veScalarWhereInput[]
-  tai_khoan?: Prisma.IntFilter<"dat_ve"> | number
+  id?: Prisma.IntFilter<"dat_ve"> | number
+  tai_khoan?: Prisma.StringFilter<"dat_ve"> | string
   ma_lich_chieu?: Prisma.IntFilter<"dat_ve"> | number
   ma_ghe?: Prisma.IntFilter<"dat_ve"> | number
 }
@@ -518,7 +546,8 @@ export type dat_veCreateWithoutLich_chieuInput = {
 }
 
 export type dat_veUncheckedCreateWithoutLich_chieuInput = {
-  tai_khoan: number
+  id?: number
+  tai_khoan: string
   ma_ghe: number
 }
 
@@ -554,6 +583,7 @@ export type dat_veCreateWithoutNguoi_dungInput = {
 }
 
 export type dat_veUncheckedCreateWithoutNguoi_dungInput = {
+  id?: number
   ma_lich_chieu: number
   ma_ghe: number
 }
@@ -585,7 +615,8 @@ export type dat_veUpdateManyWithWhereWithoutNguoi_dungInput = {
 }
 
 export type dat_veCreateManyGheInput = {
-  tai_khoan: number
+  id?: number
+  tai_khoan: string
   ma_lich_chieu: number
 }
 
@@ -595,17 +626,20 @@ export type dat_veUpdateWithoutGheInput = {
 }
 
 export type dat_veUncheckedUpdateWithoutGheInput = {
-  tai_khoan?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  tai_khoan?: Prisma.StringFieldUpdateOperationsInput | string
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type dat_veUncheckedUpdateManyWithoutGheInput = {
-  tai_khoan?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  tai_khoan?: Prisma.StringFieldUpdateOperationsInput | string
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type dat_veCreateManyLich_chieuInput = {
-  tai_khoan: number
+  id?: number
+  tai_khoan: string
   ma_ghe: number
 }
 
@@ -615,16 +649,19 @@ export type dat_veUpdateWithoutLich_chieuInput = {
 }
 
 export type dat_veUncheckedUpdateWithoutLich_chieuInput = {
-  tai_khoan?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  tai_khoan?: Prisma.StringFieldUpdateOperationsInput | string
   ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type dat_veUncheckedUpdateManyWithoutLich_chieuInput = {
-  tai_khoan?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  tai_khoan?: Prisma.StringFieldUpdateOperationsInput | string
   ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type dat_veCreateManyNguoi_dungInput = {
+  id?: number
   ma_lich_chieu: number
   ma_ghe: number
 }
@@ -635,11 +672,13 @@ export type dat_veUpdateWithoutNguoi_dungInput = {
 }
 
 export type dat_veUncheckedUpdateWithoutNguoi_dungInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type dat_veUncheckedUpdateManyWithoutNguoi_dungInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_lich_chieu?: Prisma.IntFieldUpdateOperationsInput | number
   ma_ghe?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -647,6 +686,7 @@ export type dat_veUncheckedUpdateManyWithoutNguoi_dungInput = {
 
 
 export type dat_veSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   tai_khoan?: boolean
   ma_lich_chieu?: boolean
   ma_ghe?: boolean
@@ -658,12 +698,13 @@ export type dat_veSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 
 
 export type dat_veSelectScalar = {
+  id?: boolean
   tai_khoan?: boolean
   ma_lich_chieu?: boolean
   ma_ghe?: boolean
 }
 
-export type dat_veOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"tai_khoan" | "ma_lich_chieu" | "ma_ghe", ExtArgs["result"]["dat_ve"]>
+export type dat_veOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tai_khoan" | "ma_lich_chieu" | "ma_ghe", ExtArgs["result"]["dat_ve"]>
 export type dat_veInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   ghe?: boolean | Prisma.gheDefaultArgs<ExtArgs>
   lich_chieu?: boolean | Prisma.lich_chieuDefaultArgs<ExtArgs>
@@ -678,7 +719,8 @@ export type $dat_vePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     nguoi_dung: Prisma.$nguoi_dungPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    tai_khoan: number
+    id: number
+    tai_khoan: string
     ma_lich_chieu: number
     ma_ghe: number
   }, ExtArgs["result"]["dat_ve"]>
@@ -764,8 +806,8 @@ export interface dat_veDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * // Get first 10 Dat_ves
    * const dat_ves = await prisma.dat_ve.findMany({ take: 10 })
    * 
-   * // Only select the `tai_khoan`
-   * const dat_veWithTai_khoanOnly = await prisma.dat_ve.findMany({ select: { tai_khoan: true } })
+   * // Only select the `id`
+   * const dat_veWithIdOnly = await prisma.dat_ve.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends dat_veFindManyArgs>(args?: Prisma.SelectSubset<T, dat_veFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$dat_vePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1053,7 +1095,8 @@ export interface Prisma__dat_veClient<T, Null = never, ExtArgs extends runtime.T
  * Fields of the dat_ve model
  */
 export interface dat_veFieldRefs {
-  readonly tai_khoan: Prisma.FieldRef<"dat_ve", 'Int'>
+  readonly id: Prisma.FieldRef<"dat_ve", 'Int'>
+  readonly tai_khoan: Prisma.FieldRef<"dat_ve", 'String'>
   readonly ma_lich_chieu: Prisma.FieldRef<"dat_ve", 'Int'>
   readonly ma_ghe: Prisma.FieldRef<"dat_ve", 'Int'>
 }

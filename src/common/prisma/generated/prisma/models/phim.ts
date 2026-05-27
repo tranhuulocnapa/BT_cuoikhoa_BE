@@ -27,16 +27,19 @@ export type AggregatePhim = {
 }
 
 export type PhimAvgAggregateOutputType = {
+  id: number | null
   ma_phim: number | null
   danh_gia: number | null
 }
 
 export type PhimSumAggregateOutputType = {
+  id: number | null
   ma_phim: number | null
   danh_gia: number | null
 }
 
 export type PhimMinAggregateOutputType = {
+  id: number | null
   ma_phim: number | null
   ten_phim: string | null
   trailer: string | null
@@ -50,6 +53,7 @@ export type PhimMinAggregateOutputType = {
 }
 
 export type PhimMaxAggregateOutputType = {
+  id: number | null
   ma_phim: number | null
   ten_phim: string | null
   trailer: string | null
@@ -63,6 +67,7 @@ export type PhimMaxAggregateOutputType = {
 }
 
 export type PhimCountAggregateOutputType = {
+  id: number
   ma_phim: number
   ten_phim: number
   trailer: number
@@ -78,16 +83,19 @@ export type PhimCountAggregateOutputType = {
 
 
 export type PhimAvgAggregateInputType = {
+  id?: true
   ma_phim?: true
   danh_gia?: true
 }
 
 export type PhimSumAggregateInputType = {
+  id?: true
   ma_phim?: true
   danh_gia?: true
 }
 
 export type PhimMinAggregateInputType = {
+  id?: true
   ma_phim?: true
   ten_phim?: true
   trailer?: true
@@ -101,6 +109,7 @@ export type PhimMinAggregateInputType = {
 }
 
 export type PhimMaxAggregateInputType = {
+  id?: true
   ma_phim?: true
   ten_phim?: true
   trailer?: true
@@ -114,6 +123,7 @@ export type PhimMaxAggregateInputType = {
 }
 
 export type PhimCountAggregateInputType = {
+  id?: true
   ma_phim?: true
   ten_phim?: true
   trailer?: true
@@ -214,6 +224,7 @@ export type phimGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 }
 
 export type PhimGroupByOutputType = {
+  id: number
   ma_phim: number
   ten_phim: string
   trailer: string | null
@@ -250,6 +261,7 @@ export type phimWhereInput = {
   AND?: Prisma.phimWhereInput | Prisma.phimWhereInput[]
   OR?: Prisma.phimWhereInput[]
   NOT?: Prisma.phimWhereInput | Prisma.phimWhereInput[]
+  id?: Prisma.IntFilter<"phim"> | number
   ma_phim?: Prisma.IntFilter<"phim"> | number
   ten_phim?: Prisma.StringFilter<"phim"> | string
   trailer?: Prisma.StringNullableFilter<"phim"> | string | null
@@ -265,6 +277,7 @@ export type phimWhereInput = {
 }
 
 export type phimOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   ten_phim?: Prisma.SortOrder
   trailer?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -281,6 +294,7 @@ export type phimOrderByWithRelationInput = {
 }
 
 export type phimWhereUniqueInput = Prisma.AtLeast<{
+  id?: number
   ma_phim?: number
   AND?: Prisma.phimWhereInput | Prisma.phimWhereInput[]
   OR?: Prisma.phimWhereInput[]
@@ -296,9 +310,10 @@ export type phimWhereUniqueInput = Prisma.AtLeast<{
   sap_chieu?: Prisma.BoolNullableFilter<"phim"> | boolean | null
   banner?: Prisma.BannerListRelationFilter
   lich_chieu?: Prisma.Lich_chieuListRelationFilter
-}, "ma_phim">
+}, "id" | "ma_phim">
 
 export type phimOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   ten_phim?: Prisma.SortOrder
   trailer?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -320,6 +335,7 @@ export type phimScalarWhereWithAggregatesInput = {
   AND?: Prisma.phimScalarWhereWithAggregatesInput | Prisma.phimScalarWhereWithAggregatesInput[]
   OR?: Prisma.phimScalarWhereWithAggregatesInput[]
   NOT?: Prisma.phimScalarWhereWithAggregatesInput | Prisma.phimScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"phim"> | number
   ma_phim?: Prisma.IntWithAggregatesFilter<"phim"> | number
   ten_phim?: Prisma.StringWithAggregatesFilter<"phim"> | string
   trailer?: Prisma.StringNullableWithAggregatesFilter<"phim"> | string | null
@@ -333,6 +349,7 @@ export type phimScalarWhereWithAggregatesInput = {
 }
 
 export type phimCreateInput = {
+  ma_phim: number
   ten_phim: string
   trailer?: string | null
   hinh_anh?: string | null
@@ -347,7 +364,8 @@ export type phimCreateInput = {
 }
 
 export type phimUncheckedCreateInput = {
-  ma_phim?: number
+  id?: number
+  ma_phim: number
   ten_phim: string
   trailer?: string | null
   hinh_anh?: string | null
@@ -362,6 +380,7 @@ export type phimUncheckedCreateInput = {
 }
 
 export type phimUpdateInput = {
+  ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   ten_phim?: Prisma.StringFieldUpdateOperationsInput | string
   trailer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   hinh_anh?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -376,6 +395,7 @@ export type phimUpdateInput = {
 }
 
 export type phimUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   ten_phim?: Prisma.StringFieldUpdateOperationsInput | string
   trailer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -391,7 +411,8 @@ export type phimUncheckedUpdateInput = {
 }
 
 export type phimCreateManyInput = {
-  ma_phim?: number
+  id?: number
+  ma_phim: number
   ten_phim: string
   trailer?: string | null
   hinh_anh?: string | null
@@ -404,6 +425,7 @@ export type phimCreateManyInput = {
 }
 
 export type phimUpdateManyMutationInput = {
+  ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   ten_phim?: Prisma.StringFieldUpdateOperationsInput | string
   trailer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   hinh_anh?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -416,6 +438,7 @@ export type phimUpdateManyMutationInput = {
 }
 
 export type phimUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   ten_phim?: Prisma.StringFieldUpdateOperationsInput | string
   trailer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -440,6 +463,7 @@ export type phimOrderByRelevanceInput = {
 }
 
 export type phimCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   ten_phim?: Prisma.SortOrder
   trailer?: Prisma.SortOrder
@@ -453,11 +477,13 @@ export type phimCountOrderByAggregateInput = {
 }
 
 export type phimAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   danh_gia?: Prisma.SortOrder
 }
 
 export type phimMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   ten_phim?: Prisma.SortOrder
   trailer?: Prisma.SortOrder
@@ -471,6 +497,7 @@ export type phimMaxOrderByAggregateInput = {
 }
 
 export type phimMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   ten_phim?: Prisma.SortOrder
   trailer?: Prisma.SortOrder
@@ -484,6 +511,7 @@ export type phimMinOrderByAggregateInput = {
 }
 
 export type phimSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   ma_phim?: Prisma.SortOrder
   danh_gia?: Prisma.SortOrder
 }
@@ -533,6 +561,7 @@ export type NullableBoolFieldUpdateOperationsInput = {
 }
 
 export type phimCreateWithoutBannerInput = {
+  ma_phim: number
   ten_phim: string
   trailer?: string | null
   hinh_anh?: string | null
@@ -546,7 +575,8 @@ export type phimCreateWithoutBannerInput = {
 }
 
 export type phimUncheckedCreateWithoutBannerInput = {
-  ma_phim?: number
+  id?: number
+  ma_phim: number
   ten_phim: string
   trailer?: string | null
   hinh_anh?: string | null
@@ -576,6 +606,7 @@ export type phimUpdateToOneWithWhereWithoutBannerInput = {
 }
 
 export type phimUpdateWithoutBannerInput = {
+  ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   ten_phim?: Prisma.StringFieldUpdateOperationsInput | string
   trailer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   hinh_anh?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -589,6 +620,7 @@ export type phimUpdateWithoutBannerInput = {
 }
 
 export type phimUncheckedUpdateWithoutBannerInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   ten_phim?: Prisma.StringFieldUpdateOperationsInput | string
   trailer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -603,6 +635,7 @@ export type phimUncheckedUpdateWithoutBannerInput = {
 }
 
 export type phimCreateWithoutLich_chieuInput = {
+  ma_phim: number
   ten_phim: string
   trailer?: string | null
   hinh_anh?: string | null
@@ -616,7 +649,8 @@ export type phimCreateWithoutLich_chieuInput = {
 }
 
 export type phimUncheckedCreateWithoutLich_chieuInput = {
-  ma_phim?: number
+  id?: number
+  ma_phim: number
   ten_phim: string
   trailer?: string | null
   hinh_anh?: string | null
@@ -646,6 +680,7 @@ export type phimUpdateToOneWithWhereWithoutLich_chieuInput = {
 }
 
 export type phimUpdateWithoutLich_chieuInput = {
+  ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   ten_phim?: Prisma.StringFieldUpdateOperationsInput | string
   trailer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   hinh_anh?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -659,6 +694,7 @@ export type phimUpdateWithoutLich_chieuInput = {
 }
 
 export type phimUncheckedUpdateWithoutLich_chieuInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   ma_phim?: Prisma.IntFieldUpdateOperationsInput | number
   ten_phim?: Prisma.StringFieldUpdateOperationsInput | string
   trailer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -713,6 +749,7 @@ export type PhimCountOutputTypeCountLich_chieuArgs<ExtArgs extends runtime.Types
 
 
 export type phimSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   ma_phim?: boolean
   ten_phim?: boolean
   trailer?: boolean
@@ -731,6 +768,7 @@ export type phimSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 
 
 export type phimSelectScalar = {
+  id?: boolean
   ma_phim?: boolean
   ten_phim?: boolean
   trailer?: boolean
@@ -743,7 +781,7 @@ export type phimSelectScalar = {
   sap_chieu?: boolean
 }
 
-export type phimOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ma_phim" | "ten_phim" | "trailer" | "hinh_anh" | "mo_ta" | "ngay_khoi_chieu" | "danh_gia" | "hot" | "dang_chieu" | "sap_chieu", ExtArgs["result"]["phim"]>
+export type phimOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ma_phim" | "ten_phim" | "trailer" | "hinh_anh" | "mo_ta" | "ngay_khoi_chieu" | "danh_gia" | "hot" | "dang_chieu" | "sap_chieu", ExtArgs["result"]["phim"]>
 export type phimInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   banner?: boolean | Prisma.phim$bannerArgs<ExtArgs>
   lich_chieu?: boolean | Prisma.phim$lich_chieuArgs<ExtArgs>
@@ -757,6 +795,7 @@ export type $phimPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     lich_chieu: Prisma.$lich_chieuPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     ma_phim: number
     ten_phim: string
     trailer: string | null
@@ -850,8 +889,8 @@ export interface phimDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
    * // Get first 10 Phims
    * const phims = await prisma.phim.findMany({ take: 10 })
    * 
-   * // Only select the `ma_phim`
-   * const phimWithMa_phimOnly = await prisma.phim.findMany({ select: { ma_phim: true } })
+   * // Only select the `id`
+   * const phimWithIdOnly = await prisma.phim.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends phimFindManyArgs>(args?: Prisma.SelectSubset<T, phimFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$phimPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1138,6 +1177,7 @@ export interface Prisma__phimClient<T, Null = never, ExtArgs extends runtime.Typ
  * Fields of the phim model
  */
 export interface phimFieldRefs {
+  readonly id: Prisma.FieldRef<"phim", 'Int'>
   readonly ma_phim: Prisma.FieldRef<"phim", 'Int'>
   readonly ten_phim: Prisma.FieldRef<"phim", 'String'>
   readonly trailer: Prisma.FieldRef<"phim", 'String'>
